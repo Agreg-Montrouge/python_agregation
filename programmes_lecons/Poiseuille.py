@@ -23,7 +23,6 @@
 
 
 #import des bibliothèques python
-from matplotlib.pyplot import cm
 import matplotlib.pyplot as plt
 import numpy as np
 
