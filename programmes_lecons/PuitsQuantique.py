@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+'''
 #Nom du programme : PuitsQuantique
 
 #Auteurs : Arnaud Raoux, François Lévrier, Emmanuel Baudin et la prépa agreg de Montrouge
@@ -15,14 +14,14 @@
 #v 1.00 : 2016-03-01 Première version complète
 
 #Version de Python
-#3.4
+#3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
 #Description : 
 #Ce programme permet de représenter les niveaux d'énergie dans un puits quantique, ainsi que les fonctions d'onde correspondantes. Il est inspiré d'un programme détaillé dans les références.
-
+'''
 
 #import des bibliothèques python
 from pylab import *
@@ -165,7 +164,7 @@ def main():
         ax[0].plot(x, psi[:,0], label="E = %.2f"%E)
 
     ax[0].set_title("Fonctions d'onde propres")
-    ax[0].set_ylim(-100,200)
+    ax[0].set_ylim(-250,800)
     ax[0].set_ylabel('$\Psi(x)$', rotation='horizontal', fontsize = 15)
     
     # Pointilles

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #Nom du programme : EffetTunnel
 
 #Auteurs : Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
@@ -9,10 +7,12 @@
 #Contact : arnaud.raoux@ens.fr
 #
 #Année de création : 2016 
-#Version : 1.00
+#Version : 1.10
 
 #Liste des modifications
 #v 1.00 : 2016-05-15 Première version complète
+#v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+
 
 #Version de Python
 # 3.4
@@ -117,8 +117,8 @@ plt.ylabel('Transmission') # Label de l'axe des ordonnees
 
 # Positionnement des barres de modification
 axcolor = 'lightgoldenrodyellow'  # Choix de la couleur
-ax_d = plt.axes([0.1, 0.1, 0.75, 0.03], axisbg=axcolor)
-ax_Emax  = plt.axes([0.1, 0.07, 0.75, 0.03], axisbg=axcolor)
+ax_d = plt.axes([0.1, 0.1, 0.75, 0.03], facecolor=axcolor)
+ax_Emax  = plt.axes([0.1, 0.07, 0.75, 0.03], facecolor=axcolor)
 
 s_d = Slider(ax_d, r'$d$', 0, 5.0, valinit=d0) # Remarquer la valeur initiale d0
 s_Emax = Slider(ax_Emax, r'$E_\mathrm{max}$', 1, 10.0, valinit=Emax0) # Remarquer la valeur initiale Emax0

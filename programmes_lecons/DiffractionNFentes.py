@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+'''
 #Nom du programme : DiffractionNFentes
 
 #Auteurs : Arnaud Raoux, Emmanuel Baudin, François Lévrier et la prépa agreg de Montrouge
@@ -9,14 +8,15 @@
 #Contact : arnaud.raoux@ens.fr
 #
 #Année de création : 2016 
-#Version : 1.10
+#Version : 1.20
 
 #Liste des modifications
 #v 1.00 : 2016-03-01 Première version complète
 #v 1.10 : 2016-05-02 Mise à jour de la mise en page
+#v 1.20 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
 
 #Version de Python
-#3.4
+#3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
@@ -28,7 +28,7 @@
 #Ce programme représente la figure d'interférence obtenue lorsqu'une onde plane monochromatique de longueur d'onde lambda traverse un dispositif de N fentes régulièrement espacées d'une distance a (centre-centre) et de largeur b chacunes. L'écran est positionné à une distance D des fentes. 
 # Le résultat présenté est l'intensité lumineuse normalisée en fonction de la position réduite sur l'écran pour permettre une comparaison des différentes situations.
 #Les paramètres peuvent être variés indépendamment pour observer leur effet sur la figure d'interférence. Il est aussi possible de tracer l'enveloppe de diffraction correspondant à la diffraction par une fente de largeur w seule. 
-
+'''
 
 #import des bibliothèques python
 from __future__ import unicode_literals
@@ -118,10 +118,10 @@ PLOTS['Facteur de structure'] = plt.plot(abscisses,
 
 # Positionnement des barres de modification
 axcolor = 'lightgoldenrodyellow'  # Choix de la couleur
-ax_N = plt.axes([0.25, 0.07, 0.65, 0.03], axisbg=axcolor)
-ax_a = plt.axes([0.25, 0.1, 0.65, 0.03], axisbg=axcolor)
-ax_b = plt.axes([0.25, 0.13, 0.65, 0.03], axisbg=axcolor)
-ax_lamb = plt.axes([0.25, 0.16, 0.65, 0.03], axisbg=axcolor)
+ax_N = plt.axes([0.25, 0.07, 0.65, 0.03], facecolor=axcolor)
+ax_a = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
+ax_b = plt.axes([0.25, 0.13, 0.65, 0.03], facecolor=axcolor)
+ax_lamb = plt.axes([0.25, 0.16, 0.65, 0.03], facecolor=axcolor)
 
 # Noter les valeurs initiales
 s_N = Slider(ax_N, 'N', 2, 30.0, valinit=N0)
@@ -174,7 +174,7 @@ def reset(event):
 button.on_clicked(reset)
 
 # Creation du menu de selection des traces a afficher
-cax = plt.axes([0.015, 0.3, 0.2, 0.15], axisbg=axcolor)
+cax = plt.axes([0.015, 0.3, 0.2, 0.15], facecolor=axcolor)
 check = CheckButtons(cax,
                      ('Fonction', 'Facteur de forme', 'Facteur de structure'),
                      (True, False, False))

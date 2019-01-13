@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #Nom du programme : EchantillionageFiltrage
 
 #Auteurs : David Delgove, Arnaud Raoux et la prépa agreg de Montrouge
@@ -13,6 +11,9 @@
 
 #Liste des modifications
 #v 1.00 : 2017-06-09 Première version complète
+#v 1.10 : 2018-05-08 Ajout d'un slider pour la fréquence d'échantillonage
+#v 1.20 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+
 
 #Version de Python
 #3.5
@@ -29,6 +30,7 @@
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+from matplotlib.widgets import Slider, Button, RadioButtons, CheckButtons
 
 # =============================================================================
 # --- Définitions des paramètres sur lesquels on peut agir --------------------
@@ -41,7 +43,7 @@ Amplitude = 1.0 # Amplitude du signal
 
 ### Signal numérique d'entrée ###
 Tacquisition = 1 # durée d'acquisition
-fechantillonnage = 21 # fréquence d'échantillonnage
+fechantillonnage0 = 35 # fréquence d'échantillonnage
 
 ### Signal numérique post-filtre passe-bas ###
 Plot_Action_filtre = False # Tracer ou non l'action du filtre passe-bas
@@ -95,20 +97,21 @@ def PasseBas(fcoupure,fech,Entree) :
 #Table du signal analogique (en fait échantilloné avec une très grande fréquence : aucun problème de repliement de spectre)
 Table_vrai_signalx, Table_vrai_signaly = TableSignalEntree(fe,200*fe,Tacquisition,Amplitude)
     
-#Table du signal échantilloné
-Tablex,Tabley = TableSignalEntree(fe,fechantillonnage,Tacquisition,Amplitude)
+#Table du signal échantilloné initial
+Tablex,Tabley = TableSignalEntree(fe,fechantillonnage0,Tacquisition,Amplitude)
 
-# Calcul l'action du filtre 
-if Plot_Action_filtre :
-    sortie = PasseBas(fc,fechantillonnage,Tabley)
+## Calcul l'action du filtre 
+#if Plot_Action_filtre :
+    #sortie = PasseBas(fc,fechantillonnage,Tabley)
 
-#Titre de la figure
-fa, ax = plt.subplots(1, sharex=True)
+fig, ax = plt.subplots(1, sharex=True)
+plt.subplots_adjust(left=0.12, bottom=0.2)
+
 if Plot_Action_filtre :
-    ax.set_title(r'Filtre Passe-bas (fech='+str(fechantillonnage)+' Hz, fana='+str(fe)+' Hz, fc='+str(fc)+' Hz)')
+    ax.set_title(r'Filtre Passe-bas (fech='+str(fechantillonnage0)+' Hz, fana='+str(fe)+' Hz, fc='+str(fc)+' Hz)')
     Msize = 0; Mtype = '.'
 else :
-    ax.set_title(r'Echantillonnage (fech='+str(fechantillonnage)+' Hz, fana='+str(fe)+' Hz)')
+    ax.set_title(r'Echantillonnage ($f_\mathrm{analog}=$'+str(fe)+' Hz)')
     Msize = 10; Mtype = 'x'
 
     
@@ -121,12 +124,30 @@ plt.grid(True)
 
 #Trace le signal "analogique", le signal échantilloné et le signal filtré
 ax.plot(Table_vrai_signalx,Table_vrai_signaly,color='blue',linewidth=1,label="Analogique")
-ax.plot(Tablex,Tabley,color='red',marker=Mtype,markersize=Msize,linewidth=2,label="Numérique")
+l, = ax.plot(Tablex,Tabley,color='red',marker=Mtype,markersize=Msize,linewidth=2,label="Numérique")
 
-if Plot_Action_filtre :
-    ax.plot(Tablex,sortie,color='black',marker=Mtype,markersize=Msize,linewidth=2,label="Sortie du filtre")
+#if Plot_Action_filtre :
+    #ax.plot(Tablex,sortie,color='black',marker=Mtype,markersize=Msize,linewidth=2,label="Sortie du filtre")
 
-    
 plt.legend(loc="upper left", bbox_to_anchor=[0, 1],ncol=3, shadow=True,fancybox=True)
 
-plt.show()
+# =============================================================================
+# --- Slider fréquence --------------------------------------------------------
+# =============================================================================
+
+# Creation des barres de modification amplitude et frequence
+axcolor = 'lightgoldenrodyellow'
+axf = plt.axes([0.25, 0.07, 0.65, 0.03], facecolor=axcolor)
+sf = Slider(axf, '$f_\mathrm{echantillonnage}$ (Hz)', 5., 60., valinit=fechantillonnage0) # Remarquer la valeur initiale 633 nm
+
+# Fonction de mise a jour du graphique
+def update(val):
+    fechantillonnage=sf.val  # On recupere la valeur de la barre sk comme vecteur d'onde
+    new_x, new_y =  TableSignalEntree(fe,fechantillonnage,Tacquisition,Amplitude)
+    l.set_ydata(new_y) # On met a jour l'objet 'l' avec ces nouvelles valeurs
+    l.set_xdata(new_x) # On met a jour l'objet 'l' avec ces nouvelles valeurs 
+    fig.canvas.draw_idle() # On provoque la mise a jour du graphique, qui n'est pas automatique par defaut
+sf.on_changed(update) # lorsque la barre sa est modifiee, on applique la fonction update
+
+
+plt.show() # On provoque l'affichage a l'ecran

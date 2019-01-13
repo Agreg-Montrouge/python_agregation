@@ -9,13 +9,14 @@
 #Contact : arnaud.raoux@ens.fr
 #
 #Année de création : 2016 
-#Version : 1.00
+#Version : 1.10
 
 #Liste des modifications
 #v 1.00 : 2016-05-15 Première version complète
+#v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
 
 #Version de Python
-# 3.4
+# 3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
@@ -66,7 +67,7 @@ init_M1_val = 1.0 # Masse de l'astre 1, unite definie par M1_unit
 init_M1_unit= 'Masse solaire' # Unite de la masse de l'astre 1, peut etre 'Masse solaire' pour une masse solaire, ou 'Masse terrestre' pour une masse terrestre 
 init_M2_val = 1.0 # Masse de l'astre 2, unite definie par M2_unit
 init_M2_unit= 'Masse terrestre' # Unite de la masse de l'astre 2, peut etre 'Masse solaire' pour une masse solaire, ou 'Masse terrestre' pour une masse terrestre 
-init_a_UA = 1.0 # demi grand axe exprime en UA
+init_a_UA = 4.0 # demi grand axe exprime en UA
 init_e=0.0 # Excentricite
 M1_unit=init_M1_unit
 M2_unit=init_M2_unit
@@ -114,20 +115,20 @@ plt.axis([-10.0, 10.0, -10.0, 10.0])
 
 # Creation des barres de modification amplitude et frequence
 axcolor = 'lightgoldenrodyellow'
-axtheta0 = plt.axes([0.07, 0.07, 0.85, 0.03], axisbg=axcolor)
-axM1 = plt.axes([0.07, 0.19, 0.85, 0.03], axisbg=axcolor)
-axM2 = plt.axes([0.07, 0.16, 0.85, 0.03], axisbg=axcolor)
-axa = plt.axes([0.07, 0.1, 0.85, 0.03], axisbg=axcolor)
-axe = plt.axes([0.07, 0.13, 0.85, 0.03], axisbg=axcolor)
+axtheta0 = plt.axes([0.07, 0.07, 0.85, 0.03], facecolor=axcolor)
+axM1 = plt.axes([0.07, 0.19, 0.85, 0.03], facecolor=axcolor)
+axM2 = plt.axes([0.07, 0.16, 0.85, 0.03], facecolor=axcolor)
+axa = plt.axes([0.07, 0.1, 0.85, 0.03], facecolor=axcolor)
+axe = plt.axes([0.07, 0.13, 0.85, 0.03], facecolor=axcolor)
 stheta0 = Slider(axtheta0, r'$\theta_0$', 0.0, 180.0, valinit=init_theta0) # Remarquer la valeur initiale init_theta0
 sM1 = Slider(axM1, r'$M_1$', 0.1, 10.0, valinit=init_M1_val) # Remarquer la valeur initiale init_theta0
 sM2 = Slider(axM2, r'$M_2$', 0.1, 10.0, valinit=init_M2_val) # Remarquer la valeur initiale init_theta0
 sa = Slider(axa, r'$a$', 0.1, 10.0, valinit=init_a_UA) # Remarquer la valeur initiale init_theta0
 se = Slider(axe, r'$e$', 0.0, 0.9999999, valinit=init_e) # Remarquer la valeur initiale init_theta0
 # Creation des menus de changement des unites des masses
-rax_M1_unit = plt.axes([0.7, 0.6, 0.22, 0.15], axisbg=axcolor,title=r'$M_1$'+' '+'[Unit]')
+rax_M1_unit = plt.axes([0.7, 0.6, 0.22, 0.15], facecolor=axcolor,title=r'$M_1$'+' '+'[Unit]')
 radio_M1_unit = RadioButtons(rax_M1_unit, liste_unite_de_masse, active=0) # La valeur par defaut est la numero 0 (Masse solaire)
-rax_M2_unit = plt.axes([0.7, 0.3, 0.22, 0.15], axisbg=axcolor,title=r'$M_2$'+' '+'[Unit]')
+rax_M2_unit = plt.axes([0.7, 0.3, 0.22, 0.15], facecolor=axcolor,title=r'$M_2$'+' '+'[Unit]')
 radio_M2_unit = RadioButtons(rax_M2_unit, liste_unite_de_masse, active=1) # La valeur par defaut est la numero 1 (Masse terrestre)
 
 # Fonction pour recuperer la valeur d'un bouton radio

@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #Nom du programme : EcoulementCouette
 
 #Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge

@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+'''
 #Nom du programme : Poiseuille
 
 #Auteurs : Arnaud Raoux, Emmanuel Baudin, François Lévrier et la prépa agreg de Montrouge
@@ -20,7 +19,7 @@
 
 #Description : 
 #Ce programme représente le champ de vitesse dans un ecoulement de Poiseuille (tube)
-
+'''
 
 #import des bibliothèques python
 import matplotlib.pyplot as plt

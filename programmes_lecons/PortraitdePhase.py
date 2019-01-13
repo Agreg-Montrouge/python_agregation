@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+'''
 #Nom du programme : PortraitdePhase
 
 #Auteurs : Arnaud Raoux, François Lévrier, Emmanuel Baudin et la prépa agreg de Montrouge
@@ -15,7 +14,7 @@
 #v 1.00 : 2016-05-02 Première version complète
 
 #Version Python
-#3.4
+#3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
@@ -24,7 +23,8 @@
 #Pour un affichage optimal, il est recommandé de mettre la fenêtre en plein écran.
 
 #Description : 
-#CCe programme permet de représenter partiellement le portrait de phase d'une solution de l'équation d'un pendule simple. Seules les trajectoires commençant à theta=0 (avec une grande gamme de vitesses initiales) sont tracées, d'où un portrait de phase non rempli.
+#Ce programme permet de représenter partiellement le portrait de phase d'une solution de l'équation d'un pendule simple. Seules les trajectoires commençant à theta=0 (avec une grande gamme de vitesses initiales) sont tracées, d'où un portrait de phase non rempli.
+'''
 
 #import des bibliothèques python
 import numpy as np

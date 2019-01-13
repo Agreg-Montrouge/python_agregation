@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+'''
 #Nom du programme : PropagationOnde
 
 #Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
@@ -9,20 +8,21 @@
 #Contact : arnaud.raoux@ens.fr
 #
 #Année de création : 2016 
-#Version : 1.00
+#Version : 1.10
 
 #Liste des modifications
 #v 1.00 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
+#v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
 
 #Version Python
-#3.4
+#3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
 #Description : 
 #Ce programme représente l'effet d'une barrière d'amplitude du coefficient de reflexion r sur une onde sonore plane harmonique propagative. La réflexion est représentée spatialement, le temps pouvant être varié indépendamment. Il est possible de modifier l'amplitude de l'onde, le coefficient de réflexion de la barrière, ainsi que la fréquence de l'onde incidente. 
-
+'''
 
 #import des bibliothèques python
 import math
@@ -84,10 +84,10 @@ plt.axis([-1, 1, -10, 10])
 
 # Creation des barres de modification amplitude et frequence
 axcolor = 'lightgoldenrodyellow'
-axtemps = plt.axes([0.25, 0.16, 0.65, 0.03], axisbg=axcolor)
-axfreq = plt.axes([0.25, 0.1, 0.65, 0.03], axisbg=axcolor)
-axamp  = plt.axes([0.25, 0.13, 0.65, 0.03], axisbg=axcolor)
-axrefl  = plt.axes([0.25, 0.07, 0.65, 0.03], axisbg=axcolor)
+axtemps = plt.axes([0.25, 0.16, 0.65, 0.03], facecolor=axcolor)
+axfreq = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
+axamp  = plt.axes([0.25, 0.13, 0.65, 0.03], facecolor=axcolor)
+axrefl  = plt.axes([0.25, 0.07, 0.65, 0.03], facecolor=axcolor)
 
 stemps = Slider(axtemps, '$t$ (ms)', 0, 2., valinit=t0*10**3)  # Remarquer la valeur initiale t0*10**3
 sfreq = Slider(axfreq, '$f$ (Hz)', 500, 1500.0, valinit=f0) # Remarquer la valeur initiale f0
@@ -118,14 +118,14 @@ def reset(event):
     srefl.reset() # La methode .reset() appliquee a la barre srefl lui redonne sa valeur valinit, soit ra0
 button.on_clicked(reset) # Lorsqu'on clique sur "reset", on applique la fonction reset definie au dessus
 
-# Creation du menu de changement des couleurs
-rax = plt.axes([0.015, 0.5, 0.15, 0.15], axisbg=axcolor)
-radio = RadioButtons(rax, ('red', 'blue', 'green'), active=0) # La valeur par defaut est la numero 0 (red). Si on met active=1, c'est bleu, et active=2 c'est vert...
-# Definition de la fonction de changement des couleurs
-def colorfunc(label):
-    l.set_color(label) # On change la couleur en appliquant celle qui est contenue dans "label", a savoir "red", "blue" ou "green"
-    fig.canvas.draw_idle() # On provoque la mise a jour du graphique, qui n'est pas automatique par defaut
-radio.on_clicked(colorfunc) # Quand on clique sur un choix, le "label" associe a ce choix est passe a la fonction colorfunc
+## Creation du menu de changement des couleurs
+#rax = plt.axes([0.015, 0.5, 0.15, 0.15], facecolor=axcolor)
+#radio = RadioButtons(rax, ('red', 'blue', 'green'), active=0) # La valeur par defaut est la numero 0 (red). Si on met active=1, c'est bleu, et active=2 c'est vert...
+## Definition de la fonction de changement des couleurs
+#def colorfunc(label):
+#    l.set_color(label) # On change la couleur en appliquant celle qui est contenue dans "label", a savoir "red", "blue" ou "green"
+#    fig.canvas.draw_idle() # On provoque la mise a jour du graphique, qui n'est pas automatique par defaut
+#radio.on_clicked(colorfunc) # Quand on clique sur un choix, le "label" associe a ce choix est passe a la fonction colorfunc
 
 plt.show() # On provoque l'affichage a l'ecran
 

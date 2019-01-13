@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+'''
 #Nom du programme : RLC_Serie_declin
 
 #Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
@@ -9,20 +8,21 @@
 #Contact : baudin@lpa.ens.fr
 #
 #Année de création : 2016 
-#Version : 1.00
+#Version : 1.10
 
 #Liste des modifications
 #v 1.00 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
+#v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
 
 #Version Python
-#3.4
+#3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
 #Description : 
 #Ce programme représente la réponse temporelle d'un oscillateur RLC série à un forçage en échelon de tension à l'instant t=0. Il est possible de faire varier les valeurs de la résistance, la capacité et l'inductance du circuit. La fenêtre de gauche permet de choisir aux bornes de quel composant on observe la tension. A noter qu'un choisissant la résistance R, on observe à un facteur près la réponse en courant du circuit. 
-
+'''
 
 #import des bibliothèques python
 import math
@@ -109,9 +109,9 @@ plt.axis([0, 1, -1, 1])
 
 # Creation des barres de modification amplitude et frequence
 axcolor = 'lightgoldenrodyellow'
-axR = plt.axes([0.3, 0.07, 0.6, 0.03], axisbg=axcolor)
-axL = plt.axes([0.3, 0.1, 0.6, 0.03], axisbg=axcolor)
-axC = plt.axes([0.3, 0.13, 0.6, 0.03], axisbg=axcolor)
+axR = plt.axes([0.3, 0.07, 0.6, 0.03], facecolor=axcolor)
+axL = plt.axes([0.3, 0.1, 0.6, 0.03], facecolor=axcolor)
+axC = plt.axes([0.3, 0.13, 0.6, 0.03], facecolor=axcolor)
 
 sR = Slider(axR, 'Resistance ($\Omega$)', 1., 30., valinit=10.) # Remarquer la valeur initiale 10 Ohms
 sL = Slider(axL, 'Inductance ($mH$)', 0.01, 3., valinit=1.) # Remarquer la valeur initiale 1 milliHenry
@@ -145,7 +145,7 @@ def reset(event):
 button.on_clicked(reset) # Lorsqu'on clique sur "reset", on applique la fonction reset definie au dessus
 
 # Creation du menu de selection des traces a afficher
-cax = plt.axes([0.015, 0.3, 0.2, 0.15], axisbg=axcolor)
+cax = plt.axes([0.015, 0.3, 0.2, 0.15], facecolor=axcolor)
 check = CheckButtons(cax, ('R $\equiv$ I', 'L', 'C'), (False, False, True))
 # Definition de la fonction qui passe un affichage de visible a invisible
 def chooseplot(label):

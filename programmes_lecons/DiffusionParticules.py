@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #Nom du programme : DiffusionParticules
 
 #Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
@@ -9,10 +7,11 @@
 #Contact : arnaud.raoux@ens.Fr
 #
 #Année de création : 2016 
-#Version : 1.00
+#Version : 1.10
 
 #Liste des modifications
 #v 1.00 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
+#v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
@@ -68,9 +67,9 @@ plt.axis([-10, 10, 0, 1500])
 
 # Creation des barres de modification amplitude et frequence
 axcolor = 'lightgoldenrodyellow'
-axtemps = plt.axes([0.25, 0.13, 0.65, 0.03], axisbg=axcolor)
-axamp  = plt.axes([0.25, 0.1, 0.65, 0.03], axisbg=axcolor)
-axdiff  = plt.axes([0.25, 0.07, 0.65, 0.03], axisbg=axcolor)
+axtemps = plt.axes([0.25, 0.13, 0.65, 0.03], facecolor=axcolor)
+axamp  = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
+axdiff  = plt.axes([0.25, 0.07, 0.65, 0.03], facecolor=axcolor)
 stemps = Slider(axtemps, 'Temps (s)', 0., 100.0, valinit=t0) # Remarquer la valeur initiale t0
 samp = Slider(axamp, 'Nb part ', 0.1, 1000.0, valinit=N0) # Remarquer la valeur initiale N0
 sdiff = Slider(axdiff, '$D$ (m^2.s^-1)', 0., 5.0, valinit=D0) # Remarquer la valeur initiale D0
@@ -95,15 +94,6 @@ def reset(event):
     samp.reset() # La methode .reset() appliquee a la barre samp lui redonne sa valeur valinit, soit N0
     sdiff.reset() # La methode .reset() appliquee a la barre sdiff lui redonne sa valeur valinit, soit D0
 button.on_clicked(reset) # Lorsqu'on clique sur "reset", on applique la fonction reset definie au dessus
-
-# Creation du menu de changement des couleurs
-rax = plt.axes([0.015, 0.20, 0.15, 0.15], axisbg=axcolor)
-radio = RadioButtons(rax, ('red', 'blue', 'green'), active=0) # La valeur par defaut est la numero 0 (red). Si on met active=1, c'est bleu, et active=2 c'est vert...
-# Definition de la fonction de changement des couleurs
-def colorfunc(label):
-    l.set_color(label) # On change la couleur en appliquant celle qui est contenue dans "label", a savoir "red", "blue" ou "green"
-    fig.canvas.draw_idle() # On provoque la mise a jour du graphique, qui n'est pas automatique par defaut
-radio.on_clicked(colorfunc) # Quand on clique sur un choix, le "label" associe a ce choix est passe a la fonction colorfunc
 
 plt.show() # On provoque l'affichage a l'ecran
 

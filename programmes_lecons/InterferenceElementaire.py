@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #Nom du programme : InterferenceElementaire
 
 #Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
@@ -13,9 +11,10 @@
 
 #Liste des modifications
 #v 1.00 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
+#v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
 
 #Version Python
-#3.4
+#3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
@@ -96,8 +95,8 @@ axarr[1].set_ylabel('Amplitude du champ electrique (u.a.)')
 
 # Creation des barres de modification amplitude et frequence
 axcolor = 'lightgoldenrodyellow'
-axlambda = plt.axes([0.3, 0.07, 0.6, 0.03], axisbg=axcolor)
-axphi = plt.axes([0.3, 0.1, 0.6, 0.03], axisbg=axcolor)
+axlambda = plt.axes([0.3, 0.07, 0.6, 0.03], facecolor=axcolor)
+axphi = plt.axes([0.3, 0.1, 0.6, 0.03], facecolor=axcolor)
 
 slambda = Slider(axlambda, 'Longueur d\'onde $\lambda$ (nm)', 400., 800., valinit=633.) # Remarquer la valeur initiale 633 nm
 sphi = Slider(axphi, 'Dephasage $\phi$ (rad)', 0., 2*3.14159, valinit=phi0) # Remarquer la valeur initiale phi0=0

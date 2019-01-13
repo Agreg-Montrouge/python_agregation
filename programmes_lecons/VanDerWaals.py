@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+'''
 #Nom du programme : VanDerWaals
 
 #Auteurs : François Lévrier, Emmanuel Baudin, Arnaud Raoux et la prépa agreg de Montrouge
@@ -9,18 +8,22 @@
 #Contact : arnaud.raoux@ens.fr
 #
 #Année de création : 2016 
-#Version : 1.10
+#Version : 1.20
 
 #Liste des modifications
 #v 1.00 : 2016-05-02 Première version complète
 #v 1.10 : 2016-05-02 Mise à jour de la mise en page
+#v 1.20 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+
+#Version de Python
+#3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
 
 #Description : 
 #Ce programme représente le diagramme PV en unités réduite d'un fluide respectant l'équation d'état de Van der Waals. les références de température, pression et volume sont prises au point critique. Le diagramme trace les courbes isothermes ains que les courbes spinodales et courbes de saturation. 
-
+'''
 
 #import des bibliothèques python
 import math
@@ -6446,7 +6449,7 @@ for tick in ax.yaxis.get_major_ticks():tick.label.set_fontsize(15)
 
 # Creation des barres de modification amplitude et frequence
 axcolor = 'lightgoldenrodyellow'
-axT = plt.axes([0.25, 0.07, 0.65, 0.03], axisbg=axcolor)
+axT = plt.axes([0.25, 0.07, 0.65, 0.03], facecolor=axcolor)
 sT = Slider(axT, 'Temperature reduite $T_r$', 0.85,1.15, valinit=T0) # Remarquer la valeur initiale f0
 
 # Fonction de mise a jour du graphique

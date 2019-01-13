@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 #Nom du programme : FentesYoung
 
 #Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
@@ -9,13 +7,14 @@
 #Contact : arnaud.raoux@ens.fr
 #
 #Année de création : 2016 
-#Version : 1.00
+#Version : 1.10
 
 #Liste des modifications
 #v 1.00 : 2016-05-02 Première version complète 
+#v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
 
 #Version de Python
-# 3.4
+# 3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
@@ -86,10 +85,10 @@ plt.text(-0.019, 0.75, r'$L$ Distance fentes-ecran')
 
 # Creation des barres de modification amplitude et frequence
 axcolor = 'lightgoldenrodyellow'
-axk = plt.axes([0.25, 0.07, 0.65, 0.03], axisbg=axcolor)
-axa = plt.axes([0.25, 0.1, 0.65, 0.03], axisbg=axcolor)
-axw = plt.axes([0.25, 0.13, 0.65, 0.03], axisbg=axcolor)
-axL = plt.axes([0.25, 0.16, 0.65, 0.03], axisbg=axcolor)
+axk = plt.axes([0.25, 0.07, 0.65, 0.03], facecolor=axcolor)
+axa = plt.axes([0.25, 0.1, 0.65, 0.03], facecolor=axcolor)
+axw = plt.axes([0.25, 0.13, 0.65, 0.03], facecolor=axcolor)
+axL = plt.axes([0.25, 0.16, 0.65, 0.03], facecolor=axcolor)
 sk = Slider(axk, '$\lambda$ (nm)', 400., 800., valinit=633.) # Remarquer la valeur initiale 633 nm
 sa = Slider(axa, '$a$ (mm)', 0.5, 3.0, valinit=a0*10**3) # Remarquer la valeur initiale a0*10**3
 sw = Slider(axw, '$w$ ($\mu$m)', 10., 300., valinit=w0*10**6) # Remarquer la valeur initiale w0
@@ -119,18 +118,18 @@ def reset(event):
     sa.reset() # La methode .reset() appliquee a la barre sdec lui redonne sa valeur valinit, soit sa
     sw.reset() # La methode .reset() appliquee a la barre sphase lui redonne sa valeur valinit, soit sw
 button.on_clicked(reset) # Lorsqu'on clique sur "reset", on applique la fonction reset definie au dessus
-
-# Creation du menu de changement des couleurs
-rax = plt.axes([0.015, 0.5, 0.15, 0.15], axisbg=axcolor)
-radio = RadioButtons(rax, ('red', 'blue', 'green'), active=0) # La valeur par defaut est la numero 0 (red). Si on met active=1, c'est bleu, et active=2 c'est vert...
-# Definition de la fonction de changement des couleurs
-def colorfunc(label):
-    l.set_color(label) # On change la couleur en appliquant celle qui est contenue dans "label", a savoir "red", "blue" ou "green"
-    fig.canvas.draw_idle() # On provoque la mise a jour du graphique, qui n'est pas automatique par defaut
-radio.on_clicked(colorfunc) # Quand on clique sur un choix, le "label" associe a ce choix est passe a la fonction colorfunc
+#
+## Creation du menu de changement des couleurs
+#rax = plt.axes([0.015, 0.5, 0.15, 0.15], facecolor=axcolor)
+#radio = RadioButtons(rax, ('red', 'blue', 'green'), active=0) # La valeur par defaut est la numero 0 (red). Si on met active=1, c'est bleu, et active=2 c'est vert...
+## Definition de la fonction de changement des couleurs
+#def colorfunc(label):
+#    l.set_color(label) # On change la couleur en appliquant celle qui est contenue dans "label", a savoir "red", "blue" ou "green"
+#    fig.canvas.draw_idle() # On provoque la mise a jour du graphique, qui n'est pas automatique par defaut
+#radio.on_clicked(colorfunc) # Quand on clique sur un choix, le "label" associe a ce choix est passe a la fonction colorfunc
 
 # Creation du menu de selection des traces a afficher
-cax = plt.axes([0.015, 0.3, 0.2, 0.15], axisbg=axcolor)
+cax = plt.axes([0.015, 0.3, 0.2, 0.15], facecolor=axcolor)
 check = CheckButtons(cax, ('Fonction', 'Env. diff.'), (True, True))
 # Definition de la fonction qui passe un affichage de visible a invisible
 def chooseplot(label):

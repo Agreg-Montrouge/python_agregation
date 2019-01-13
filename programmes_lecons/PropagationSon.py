@@ -1,5 +1,4 @@
-# -*- coding: utf-8 -*-
-
+'''
 #Nom du programme : PropagationSon
 
 #Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
@@ -9,10 +8,14 @@
 #Contact : arnaud.raoux@ens.fr
 #
 #Année de création : 2016 
-#Version : 1.00
+#Version : 1.10
 
 #Liste des modifications
 #v 1.00 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
+#v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+
+#Version de Python
+#3.6
 
 #LICENCE
 #Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
@@ -26,7 +29,7 @@
 #Les zones de compression et dilatation peuvent être directement observées. Une poussière rouge est singularisée pour être suivie individuellement. Deux graphiques inférieurs représentent le champ de pression et le champ de vitesse respectivement. 
 #Il est possible de faire varier l'amplitude de l'onde sonore et sa fréquence pour en constater directement l'effet. 
 #ATTENTION : Le niveau sonore de 190 dB SPL correspond à une surpression de l'ordre de la pression atmosphèrique! L'hypothèse de perturbation pour obtenir l'équation de propagation du son n'est donc pas valide. Par ailleurs à ces niveaux la vitesse maximale de la particule fluide dépasse la vitesse du son ce qui n'est pas possible. Il faut donc prendre cette représentation avec prudence : ces niveaux extrêmes sont nécessaires pour pouvoir observer le phénomène dans une classe, mais ils ne correspondent pas à une situation réaliste. Au delà de 185 dB SPL, les champs de vitesse et de pression prédits par la théorie et représentés ne correspondent plus à la distribution représentée. 
-
+'''
 
 #import des bibliothèques python
 import math
@@ -124,8 +127,8 @@ axarr[2].set_ylabel('Vitesse (m/s)')
 
 # Creation des barres de modification amplitude et frequence
 axcolor = 'lightgoldenrodyellow'
-axL = plt.axes([0.3, 0.07, 0.6, 0.03], axisbg=axcolor)
-axT = plt.axes([0.3, 0.1, 0.6, 0.03], axisbg=axcolor)
+axL = plt.axes([0.3, 0.07, 0.6, 0.03], facecolor=axcolor)
+axT = plt.axes([0.3, 0.1, 0.6, 0.03], facecolor=axcolor)
 
 sL = Slider(axL, 'Amplitude sonore (dB SPL)', 160, 190, valinit=L0) # Remarquer la valeur initiale a 190 dB SPL
 sT = Slider(axT, 'Temps t (ms)', 0., 1., valinit=t0) # Remarquer la valeur initiale à 0
