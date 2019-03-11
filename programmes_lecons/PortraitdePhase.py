@@ -62,10 +62,10 @@ def eq_diff(etat_courant,t):
 # =============================================================================
 fa, ax = plt.subplots(1, sharex=True)
 
-ax.set_title(r'Portrait de phase')
+ax.set_title(r"Portrait de phase d'un pendule simple")
 ax.set_ylim(-15,15)
 ax.set_ylabel(r'$\dot \theta$')
-ax.set_xlim(-15,15)
+ax.set_xlim(-8,8)
 ax.set_xlabel(r'$\theta$')
 
 # =============================================================================
