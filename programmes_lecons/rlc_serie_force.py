@@ -39,9 +39,9 @@ description = """Ce programme représente la réponse fréquencielle d'un oscill
 La fenêtre de gauche permet de choisir aux bornes de quel composant on observe la tension. A noter qu'un choisissant la résistance R, on observe à un facteur près la réponse en courant du circuit. """
 
 
-############################################################
+#===========================================================
 # --- Variables globales et paramètres ---------------------
-############################################################
+#===========================================================
 
 parameters = {
     'R' : FloatSlider(value=10, description='Résistance -- $R$ ($\Omega$)', min=1, max=30),
@@ -50,9 +50,9 @@ parameters = {
     }
 
 
-############################################################
+#===========================================================
 # --- Modèle physique --------------------------------------
-############################################################
+#===========================================================
 
 # Resonance en tension sur la résistance : attention, valeur complexe
 def resonance_R(R, L, C, freq):
@@ -70,9 +70,9 @@ def resonance_L(R, L, C, freq):
 	return 1j*L*omega/(1j*L*omega+R+1/(1j*C*omega))
 
 
-############################################################
+#===========================================================
 # --- Réalisation du plot ----------------------------------
-############################################################
+#===========================================================
 
 # La fonction plot_data est appelée à chaque modification des paramètres
 def plot_data(R, L, C):
@@ -92,9 +92,9 @@ def plot_data(R, L, C):
     fig.canvas.draw_idle()
 
 
-############################################################
+#===========================================================
 # --- Création de la figure et mise en page ----------------
-############################################################
+#===========================================================
 
 fig = plt.figure()
 fig.suptitle(titre)

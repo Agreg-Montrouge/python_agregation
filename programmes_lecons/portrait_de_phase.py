@@ -36,9 +36,9 @@ de l'équation d'un pendule simple. Seules les trajectoires commençant à
 $\theta=0$ (avec une grande gamme de vitesses initiales) sont tracées, 
 d'où un portrait de phase non rempli."""
 
-############################################################
+#===========================================================
 # --- Variables globales et paramètres ---------------------
-############################################################
+#===========================================================
 
 omega0 = 4 # Pulsation propre en U.A.
 
@@ -50,9 +50,9 @@ Ninit = 20 # nbr de conditions initiales
 dtheta_init_list = np.linspace(-50, 50, Ninit)
 
 
-############################################################
+#===========================================================
 # --- Modèle physique --------------------------------------
-############################################################
+#===========================================================
 
 def eq_diff(etat_courant, t, omega0):
     """
@@ -61,9 +61,9 @@ def eq_diff(etat_courant, t, omega0):
     return np.array([etat_courant[1], -omega0**2*np.sin(etat_courant[0])])
 
 
-############################################################
+#===========================================================
 # --- Réalisation du plot ----------------------------------
-############################################################
+#===========================================================
 
 # La fonction plot_data est appelée à chaque modification des paramètres
 def plot_data(ax, omega0):
@@ -77,9 +77,9 @@ def plot_data(ax, omega0):
         ax.plot(-solution[:,0], solution[:,1], color='red', linewidth=1) # la fonction dtheta(theta) etant paire
 
 
-############################################################
+#===========================================================
 # --- Création de la figure et mise en page ----------------
-############################################################
+#===========================================================
 
 fig = plt.figure()
 fig.suptitle(titre)

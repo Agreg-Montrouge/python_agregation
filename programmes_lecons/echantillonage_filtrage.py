@@ -32,9 +32,9 @@ description = """Ce programme a pour objectif de mettre en évidence l'effet
 d'échantionnage, ainsi que l'effet de filtrage sur un signal analogique."""
 
 
-############################################################
+#===========================================================
 # --- Variables globales et paramètres ---------------------
-############################################################
+#===========================================================
 
 frequence_signal = 10 
 duree_acquisition = 1 
@@ -45,9 +45,9 @@ parameters = {
 
 
 
-############################################################
+#===========================================================
 # --- Modèle physique --------------------------------------
-############################################################
+#===========================================================
 
 def signal_entree(fech, fe=frequence_signal, Tacq=duree_acquisition, amp=1): 
     '''
@@ -68,9 +68,9 @@ def signal_entree(fech, fe=frequence_signal, Tacq=duree_acquisition, amp=1):
 table_vrai_signal_x, table_vrai_signal_y = signal_entree(fech = 200*frequence_signal)
 
 
-############################################################
+#===========================================================
 # --- Réalisation du plot ----------------------------------
-############################################################
+#===========================================================
 
 # La fonction plot_data est appelée à chaque modification des paramètres
 def plot_data(freq_ech=35):
@@ -81,9 +81,9 @@ def plot_data(freq_ech=35):
     fig.canvas.draw_idle()
 
 
-############################################################
+#===========================================================
 # --- Création de la figure et mise en page ----------------
-############################################################
+#===========================================================
 
 fig = plt.figure()
 fig.suptitle(titre)
