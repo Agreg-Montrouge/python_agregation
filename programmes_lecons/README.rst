@@ -5,6 +5,24 @@ Programmes pour les leçons
 Liste des programmes disponibles
 ================================
 
+* Puits quantique (`puits_quantique.py <puits_quantique.py>`_)
+* Oscillateur amorti (`oscillateur_amorti.py <oscillateur_amorti.py>`_)
+* Transition liquide-vapeur pour un fluide de Van der Waals (`van_der_waals.py <van_der_waals.py>`_)
+* Résonance en tension d'un circuit RLC série (`rlc_serie_force.py <rlc_serie_force.py>`_)
+* Réponse à un échelon de tension d'un circuit RLC série (`rlc_serie_declin.py <rlc_serie_declin.py>`_)
+* Loi de Planck (`loi_de_planck.py <loi_de_planck.py>`_)
+* Interférence par des fentes d'Young (`fentes_young.py <fentes_young.py>`_)
+* Déplacement de poussières dans une onde sonore (`propagation_son.py <propagation_son.py>`_)
+* Interférence de deux ondes harmoniques (`interference_elementaire.py <interference_elementaire.py>`_)
+* Figure de diffraction par N fentes (`diffraction_N_fentes.py <diffraction_N_fentes.py>`_)
+* Écoulement de Couette plan (`ecoulement_couette.py <ecoulement_couette.py>`_)
+* Écoulement de Poiseuille (`poiseuille.py <poiseuille.py>`_)
+* Échantillionage (`echantillonage_filtrage.py <echantillonage_filtrage.py>`_)
+* Portrait de phase d'un pendule (`portrait_de_phase.py <portrait_de_phase.py>`_)
+* Propatation d'un paquet d'onde avec dispersion (`propagation_avec_dispersion.py <propagation_avec_dispersion.py>`_)
+* Déplacement de poussières dans une onde sonore (`propagation_son.py <propagation_son.py>`_)
+* Effet tunnel (`effet_tunnel.py <effet_tunnel.py>`_)
+
 
 Les programmes
 ==============
@@ -59,3 +77,15 @@ Création d'une animation
 ========================
 
 Voir les exemples comme : ``propagation_onde``. 
+
+Informations
+============
+
+Auteurs : François Lévrier, Emmanuel Baudin, Arnaud Raoux, David Delgove, Vincent Lusset, Pierre Cladé et la prépa agreg de Montrouge
+
+Adresse : Departement de physique de l'Ecole Normale Superieure
+		24 rue Lhomond
+		75005 Paris
+
+Licence : Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
+
