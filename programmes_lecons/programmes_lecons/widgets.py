@@ -1,6 +1,22 @@
+""" Programmes pour créer des widgets
+
+Une class Widget (et FloatSlider, IntSlider) qui permet
+d'enregistrer des paramètres avant de créer le widget. La 
+syntaxe est la même que les ipywidgets. Ceci permet entre
+autre de mettre de séparer le fond (les parmètres) de la forme
+(l'axe), ce que matplotlib ne permet pas.
+
+Des fonctions : 
+    make_param_widgets, 
+    make_choose_plot, 
+    make_reset_button, 
+    make_log_button,
+    make_start_stop_animation
+
+"""
+
 import matplotlib.pyplot as plt
 from matplotlib.widgets import Slider, Button, RadioButtons, CheckButtons
-plt.style.use('lecons.mplstyle')
 
 class Widget(object):
     value = None
@@ -176,30 +192,3 @@ def make_start_stop_animation(anim, box=[0.015, 0.05, 0.12, 0.1], start_animatio
 
     return widget
 
-
-def justify_paragraph(string, width=40):
-    out = ['']
-    in_equation = False
-    for word in string.split(' '):
-        if word.startswith('$'):
-            in_equation = True
-        if not in_equation:
-            if len(out[-1]) + len(word) + 1> width:
-                out.append('')
-        out[-1] += ' ' + word
-        if word.endswith('$'):
-            in_equation = False
-
-    return '\n'.join(out)
-
-def justify(string, width=40):
-    paragraphs = ['']
-    for lines in string.split('\n'):
-        if lines.strip()=='':
-            paragraphs.append('')
-        else:
-            paragraphs[-1] += lines
-
-    out = [justify_paragraph(paragraph, width=width) for paragraph in paragraphs]
-    return '\n\n'.join(out)
-    

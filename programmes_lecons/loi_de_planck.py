@@ -37,7 +37,7 @@ import numpy as np
 from programmes_lecons import FloatSlider, IntSlider
 from programmes_lecons import make_param_widgets, make_choose_plot, make_reset_button, make_log_button
 from programmes_lecons import justify
-from constantes import c, h, k
+from programmes_lecons.constantes import c, h, k
 
 titre = r'Loi de Planck'
 
