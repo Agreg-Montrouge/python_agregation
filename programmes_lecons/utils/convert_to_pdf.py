@@ -9,4 +9,4 @@ for programme_name in tous_les_programmes:
 
 file_list = ['_pdf/{}.pdf'.format(programme_name) for programme_name in tous_les_programmes]
 
-subprocess.call(['pdfjoin', '--outfile', '_pdf/tout.pdf']+file_list)
+subprocess.call(['pdfjoin', '--outfile', 'doc/programmes_lecons.pdf']+file_list)
