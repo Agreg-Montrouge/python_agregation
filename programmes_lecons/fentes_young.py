@@ -1,14 +1,29 @@
-#Nom du programme : FentesYoung
+r"""Interférence par des fentes d'Young
 
-#Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Description
+-----------
+Ce programme représente la figure d'interférence obtenue lorsqu'une onde 
+plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif de fentes 
+d'Young éloignées d'une distance $a$ (centre-centre) et de largeur $w$. 
+L'écran est positionné à une distance $L$ des fentes.
 
-#Année de création : 2016 
-#Version : 1.2
+Formules
+--------
+$I = \sinc\left(\frac{kwx}{2L}\right)^2 \cos\left(\frac{kax}{2L}\right)^2$
 
-#Liste des modifications
-#v 1.0 : 2016-05-02 Première version complète 
-#v 1.1 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
-#v 1.2 : 2019-05-10 Simplification du programme
+Informations
+------------
+Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Année de création : 2016 
+Version : 1.2
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
+
+Liste des modifications :
+    * v 1.0 : 2016-05-02 Première version complète 
+    * v 1.1 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+    * v 1.2 : 2019-05-10 Simplification du programme
+"""
 
 import numpy as np
 from numpy import pi
@@ -20,8 +35,7 @@ from programmes_lecons import justify
 
 titre = r"Interférence par des fentes d'Young"
 
-description = r"""
-Ce programme représente la figure 
+description = r"""Ce programme représente la figure 
 d'interférence obtenue lorsqu'une onde 
 plane monochromatique de longueur d'onde 
 $\lambda$ traverse un dispositif de fentes 

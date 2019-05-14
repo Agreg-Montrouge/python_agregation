@@ -63,6 +63,7 @@ $k = \sqrt{2mE}/\hbar$
 ############################################################
 # --- Variables globales et paramètres ---------------------
 ############################################################
+
 hbar = 1
 m = 1
 
@@ -78,6 +79,7 @@ parameters = {
 ############################################################
 # --- Modèle physique --------------------------------------
 ############################################################
+
 def transmission(E, V, d):
     """ Tranmission par effet tunnel: formule exacte"""
     k = sqrt(2*m*E)/hbar # Vecteur d'onde a l'exterieur de la barriere
@@ -116,9 +118,11 @@ def plot_data(E_max=6, d=2):
 
     fig.canvas.draw_idle()
 
+
 ############################################################
 # --- Création de la figure et mise en page ----------------
 ############################################################
+
 fig = plt.figure()
 fig.suptitle(titre)
 fig.text(0.02, .9, justify(description), multialignment='left', verticalalignment='top')

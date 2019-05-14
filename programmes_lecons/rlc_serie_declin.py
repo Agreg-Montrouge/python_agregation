@@ -1,13 +1,28 @@
+r"""Réponse à un échelon de tension d'un circuit RLC série
 
-#Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Description
+------------
+Ce programme représente la réponse temporelle d'un oscillateur RLC
+série à un forçage en échelon de tension à l'instant t=0. 
 
-#Année de création : 2016 
-#Version : 1.2
+La fenêtre de gauche permet de choisir aux bornes de quel composant
+on observe la tension. A noter qu'un choisissant la résistance R, 
+on observe à un facteur près la réponse en courant du circuit. 
 
-#Liste des modifications
-#v 1.0 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
-#v 1.1 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
-#v 1.2 : 2019-05-10 Simplification du programme
+Informations
+------------
+Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Année de création : 2016 
+Version : 1.2
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
+
+
+Liste des modifications: 
+    * v 1.0 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
+    * v 1.1 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+    * v 1.2 : 2019-05-10 Simplification du programme
+"""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -23,7 +38,10 @@ description = """Ce programme représente la réponse temporelle d'un oscillateu
 La fenêtre de gauche permet de choisir aux bornes de quel composant on observe la tension. A noter qu'un choisissant la résistance R, on observe à un facteur près la réponse en courant du circuit. 
 """
 
-# Parametres de la fonction, avec des valeurs par defaut
+############################################################
+# --- Variables globales et paramètres ---------------------
+############################################################
+
 parameters = {
     'R' : FloatSlider(value=10, description='Résistance -- $R$ ($\Omega$)', min=1, max=30),
     'L' : FloatSlider(value=1, description='Inductance -- $L$ ($mH$)', min=0.01, max=3),
@@ -31,7 +49,10 @@ parameters = {
     }
 
 
-# resonance_ en tension sur la résistance : attention, valeur complexe
+############################################################
+# --- Modèle physique --------------------------------------
+############################################################
+
 def resonance_R(R, L, C, t):
 	w0 = 1/np.sqrt(L*C)
 	a = R/(2*L*w0)
@@ -64,8 +85,26 @@ def resonance_L(R, L, C, t):
 	return -resonance_R(R, L, C, t)-resonance_C(R, L, C, t)
 
 
+############################################################
+# --- Réalisation du plot ----------------------------------
+############################################################
 
-# Création de la figure et mise en page
+# La fonction plot_data est appelée à chaque modification des paramètres
+def plot_data(R, L, C):
+    L = L*1E-3
+    C = C*1E-6
+
+    lines['R $\equiv$ I'].set_data(t*1E3, resonance_R(R, L, C, t))
+    lines['L'].set_data(t*1E3, resonance_L(R, L, C, t))
+    lines['C'].set_data(t*1E3, resonance_C(R, L, C, t))
+
+    fig.canvas.draw_idle()
+
+
+############################################################
+# --- Création de la figure et mise en page ----------------
+############################################################
+
 fig = plt.figure()
 fig.suptitle(titre)
 fig.text(0.02, .9, justify(description), multialignment='left', verticalalignment='top')
@@ -86,15 +125,7 @@ ax.set_xlabel('temps (ms)')
 ax.set_ylabel('Amplitude (V)')
 
 
-def plot_data(R, L, C):
-    L = L*1E-3
-    C = C*1E-6
 
-    lines['R $\equiv$ I'].set_data(t*1E3, resonance_R(R, L, C, t))
-    lines['L'].set_data(t*1E3, resonance_L(R, L, C, t))
-    lines['C'].set_data(t*1E3, resonance_C(R, L, C, t))
-
-    fig.canvas.draw_idle()
 
 
 param_widgets = make_param_widgets(parameters, plot_data, slider_box=[0.35, 0.07, 0.4, 0.15])

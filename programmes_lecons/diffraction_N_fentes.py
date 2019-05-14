@@ -2,9 +2,13 @@ r"""Figure de diffraction par N fentes
 
 Description
 -----------
-Ce programme représente la figure d'interférence obtenue lorsqu'une onde plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif de N fentes régulièrement espacées d'une distance a (centre-centre) et de largeur $b$ chacunes. L'écran est positionné à une distance $D$ des fentes. 
+Ce programme représente la figure d'interférence obtenue lorsqu'une onde 
+plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif 
+de $N$ fentes régulièrement espacées d'une distance $a$ (centre-centre) et de 
+largeur $b$ chacunes. L'écran est positionné à une distance $D$ des fentes. 
 
-Le résultat présenté est l'intensité lumineuse normalisée en fonction de la position sur l'écran pour permettre une comparaison des différentes situations.
+Le résultat présenté est l'intensité lumineuse normalisée en fonction de 
+la position sur l'écran pour permettre une comparaison des différentes situations.
 
 Formules
 --------
@@ -16,6 +20,8 @@ Informations
 Auteurs : Arnaud Raoux, Emmanuel Baudin, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
 Année de création : 2016 
 Version : 1.3
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
 Liste des modifications :
     * v 1.0 : 2016-03-01 Première version complète
@@ -27,15 +33,20 @@ Liste des modifications :
 import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.patches as mpatches
+
 from programmes_lecons import FloatSlider, IntSlider
 from programmes_lecons import make_param_widgets, make_choose_plot, make_reset_button
 from programmes_lecons import justify
 
 titre = r"Figure de diffraction par N fentes"
 
-description = r"""Ce programme représente la figure d'interférence obtenue lorsqu'une onde plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif de N fentes régulièrement espacées d'une distance a (centre-centre) et de largeur $b$ chacunes. L'écran est positionné à une distance $D$ des fentes. 
+description = r"""Ce programme représente la figure d'interférence obtenue lorsqu'une onde 
+plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif 
+de $N$ fentes régulièrement espacées d'une distance $a$ (centre-centre) et de 
+largeur $b$ chacunes. L'écran est positionné à une distance $D$ des fentes. 
 
-Le résultat présenté est l'intensité lumineuse normalisée en fonction de la position sur l'écran pour permettre une comparaison des différentes situations.
+Le résultat présenté est l'intensité lumineuse normalisée en fonction de 
+la position sur l'écran pour permettre une comparaison des différentes situations.
 
 $\frac{I}{I_0} = \mathrm{sinc}^2\left(\frac{\pi bx}{\lambda D}\right)\times\frac{\sin^2(N\pi a x/\lambda D)}{N^2\sin^2(\pi ax/\lambda D)}$
 """

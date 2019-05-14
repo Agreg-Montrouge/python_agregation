@@ -1,17 +1,23 @@
-#Auteurs : David Delgove, Arnaud Raoux, Pierre Cladé et la prépa agreg de Montrouge
+"""Échantillionage
 
-#Année de création : 2017
-#Version : 1.00
+Description
+-----------
+Ce programme a pour objectif de mettre en évidence l'effet d'échantionnage, ainsi que l'effet de filtrage sur un signal analogique.
 
-#Liste des modifications
-#v 1.00 : 2017-06-09 Première version complète
-#v 1.10 : 2018-05-08 Ajout d'un slider pour la fréquence d'échantillonage
-#v 1.20 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+Informations
+------------
+Auteurs : David Delgove, Arnaud Raoux, Pierre Cladé et la prépa agreg de Montrouge
+Année de création : 2017
+Version : 1.3
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
-
-#Version de Python
-#3.6
-
+Liste des modifications :
+    * v 1.00 : 2017-06-09 Première version complète
+    * v 1.10 : 2018-05-08 Ajout d'un slider pour la fréquence d'échantillonage
+    * v 1.20 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+    * v 1.3 : 2019-05-10
+"""
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -22,9 +28,13 @@ from programmes_lecons import justify
 
 titre = """Échantillionage"""
 
-description = "Ce programme a pour objectif de mettre en évidence l'effet d'échantionnage, ainsi que l'effet de filtrage sur un signal analogique."
+description = """Ce programme a pour objectif de mettre en évidence l'effet 
+d'échantionnage, ainsi que l'effet de filtrage sur un signal analogique."""
 
-# Variables globales et paramètres
+
+############################################################
+# --- Variables globales et paramètres ---------------------
+############################################################
 
 frequence_signal = 10 
 duree_acquisition = 1 
@@ -35,10 +45,9 @@ parameters = {
 
 
 
-# Modèle utilisé
-# =============================================================================
-# --- Fonction intermediaire qui échantillone le signal -----------------------
-# =============================================================================
+############################################################
+# --- Modèle physique --------------------------------------
+############################################################
 
 def signal_entree(fech, fe=frequence_signal, Tacq=duree_acquisition, amp=1): 
     '''
@@ -59,7 +68,11 @@ def signal_entree(fech, fe=frequence_signal, Tacq=duree_acquisition, amp=1):
 table_vrai_signal_x, table_vrai_signal_y = signal_entree(fech = 200*frequence_signal)
 
 
-# Réalisation du plot
+############################################################
+# --- Réalisation du plot ----------------------------------
+############################################################
+
+# La fonction plot_data est appelée à chaque modification des paramètres
 def plot_data(freq_ech=35):
     #Signal échantilloné
     x, y = signal_entree(freq_ech)
@@ -68,7 +81,10 @@ def plot_data(freq_ech=35):
     fig.canvas.draw_idle()
 
 
-# Création de la figure et mise en page
+############################################################
+# --- Création de la figure et mise en page ----------------
+############################################################
+
 fig = plt.figure()
 fig.suptitle(titre)
 fig.text(0.5, .93, "Fréquence du signal :{} Hz".format(frequence_signal), 

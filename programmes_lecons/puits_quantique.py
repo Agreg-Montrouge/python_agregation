@@ -1,15 +1,29 @@
+"""Puits quantique
 
-#Nom du programme : PuitsQuantique
+Description
+-----------
+Ce programme permet de représenter les niveaux d'énergie 
+dans un puits quantique, ainsi que les fonctions d'onde correspondantes.
 
-#Auteurs : Arnaud Raoux, François Lévrier, Emmanuel Baudin, Pierre Cladé et la prépa agreg de Montrouge
+Voir aussi
+----------
+
+Griffiths, Introduction to Quantum Mechanics, 1st edition, page 62.
+https://helentronica.wordpress.com/2014/09/04/quantum-mechanics-with-the-python/
 
 
-#Année de création : 2016 
-#Version : 1.1
+Informations
+------------
+Auteurs : Arnaud Raoux, François Lévrier, Emmanuel Baudin, Pierre Cladé et la prépa agreg de Montrouge
+Année de création : 2016 
+Version : 1.1
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
-#Liste des modifications
-#v 1.00 : 2016-03-01 Première version complète
-#v 1.1 : supression des variables globales
+Liste des modifications :
+    * v 1.00 : 2016-03-01 Première version complète
+    * v 1.1 : 2019-05-10 supression des variables globales
+"""
 
 from pylab import *
 from scipy.integrate import odeint # Pour la resolution d'equations differentielles
@@ -19,14 +33,13 @@ import programmes_lecons
 
 titre = """Puits quantique"""
 
-description = """Ce programme permet de représenter les niveaux d'énergie dans un puits quantique, ainsi que les fonctions d'onde correspondantes."""
+description = """Ce programme permet de représenter les niveaux d'énergie 
+dans un puits quantique, ainsi que les fonctions d'onde correspondantes."""
 
-## Griffiths, Introduction to Quantum Mechanics, 1st edition, page 62.
-## https://helentronica.wordpress.com/2014/09/04/quantum-mechanics-with-the-python/
 
-# =============================================================================
-# --- Definitions ------------------------------------------------
-# =============================================================================
+############################################################
+# --- Variables globales et paramètres ---------------------
+############################################################
 
 N = 1001                  # Discretisation du puits
 
@@ -36,10 +49,9 @@ x = linspace(-b, b, N)    # abscisses
 L = 1                     # largeur du puits
 dx = x[1] - x[0]
 
-# =============================================================================
-# --- Fonctions intermediaires ------------------------------------------------
-# =============================================================================
-
+############################################################
+# --- Modèle physique --------------------------------------
+############################################################
 
 def V(x, L=L, Vo=Vo):
     """
@@ -70,8 +82,10 @@ def wave_function(energy, L, Vo, last_point=False):
  
 
 def find_all_zeroes(energies, L, Vo):
-    """
-    chercher les energies dont la fonction d'onde vaut 0 loin a l'interieur du puits (en x=b)
+    """Chercher les energies propres
+
+L'idee est de scanner toutes les energies entre 0 et 100Vo, et de chercher 
+celles dont la fonction d'onde vaut 0 loin à l'interieur du puits (en x=b).
     """
     all_zeroes = []
     y = [wave_function(E, L, Vo, last_point=True) for E in energies]
@@ -83,9 +97,11 @@ def find_all_zeroes(energies, L, Vo):
     return all_zeroes
 
 
-#L'idee est de scanner toutes les energies entre 0 et 100Vo, et de chercher 
-#celles dont la fonction d'onde vaut 0 loin à l'interieur du puits (en x=b).
+############################################################
+# --- Réalisation du plot ----------------------------------
+############################################################
 
+# La fonction plot_data est appelée à chaque modification des paramètres
 def plot_data(ax1, ax2, L=L, Vo=Vo):
     en = linspace(0.1, Vo, 100)   # Energies que l'on va investiger pour trouver les etats propres
     E_zeroes = find_all_zeroes(en, L, Vo) # On ne selectionne que les energies telles que la fonction d'onde vaut 0 en x=b
@@ -101,35 +117,35 @@ def plot_data(ax1, ax2, L=L, Vo=Vo):
         ax1.plot(x, psi[:,0], label="E = %.2f"%E)
 
 
-# =============================================================================
-# --- Creation de la figure ------------------------------------------
-# =============================================================================
+############################################################
+# --- Création de la figure et mise en page ----------------
+############################################################
+
 fig = plt.figure()
 fig.suptitle(titre)
 #fig.text(0.5, .93, description, multialignment='left', verticalalignment='top', horizontalalignment='center')
 
 ax1, ax2 = fig.subplots(2, sharex=True) # La figure sera composee de deux sous-figures
 
-## Energies
-
+## ax2 : Energies
 ax2.set_title(r'Énergies propres')
 ax2.set_ylim(-0.1*Vo,1.2*Vo)
 ax2.set_ylabel('$E$')
 ax2.set_xlim(-2,2)
 ax2.set_xlabel('$x/L$')
 
-
 ## Dessin du puits
 ax2.plot(x, np.vectorize(V)(x, L, Vo), linewidth=2, color='k')
+
+## ax1 : Fonctions d'onde
+ax1.set_title("Fonctions d'onde propres")
+ax1.set_ylim(-.5,1)
+ax1.set_ylabel('$\Psi(x)$')
 
 ## Pointilles
 for ax in [ax1, ax2]:
     for s in [-1, 1]:
         ax.axvline(s*L, color='k', linestyle='--')
-
-ax1.set_title("Fonctions d'onde propres")
-ax1.set_ylim(-.5,1)
-ax1.set_ylabel('$\Psi(x)$')
 
 plot_data(ax1, ax2)
 

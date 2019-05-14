@@ -1,13 +1,23 @@
-#Auteurs : Arnaud Raoux, Emmanuel Baudin, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+r"""Écoulement de Poiseuille
 
-#Année de création : 2016 
-#Version : 1.2
+Description
+-----------
+Ce programme représente le champ de vitesse dans un écoulement de Poiseuille (tube)
 
-#Liste des modifications
-#v 1.00 : 2016-03-01 Première version complète
-#v 1.10 : 2016-05-02 Mise à jour de la mise en page
-#v 1.2
 
+Informations
+------------
+Auteurs : Arnaud Raoux, Emmanuel Baudin, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Année de création : 2016 
+Version : 1.2
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
+
+Liste des modifications :
+    * v 1.00 : 2016-03-01 Première version complète
+    * v 1.10 : 2016-05-02 Mise à jour de la mise en page
+    * v 1.2 : 
+"""
 
 import matplotlib.pyplot as plt
 import numpy as np
@@ -16,6 +26,7 @@ import programmes_lecons
 
 
 titre = "Écoulement de Poiseuille"
+
 description = """Ce programme représente le champ de vitesse dans un écoulement de Poiseuille (tube)"""
 
 #Definition d'un maillage du plan dans lequel a lieu l'ecoulement

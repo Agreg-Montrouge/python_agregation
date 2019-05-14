@@ -1,29 +1,44 @@
-#Nom du programme : PortraitdePhase
-
-#Auteurs : Arnaud Raoux, François Lévrier, Emmanuel Baudin, Pierre Cladé et la prépa agreg de Montrouge
-
-#Année de création : 2016 
-#Version : 1.1
-
-#Liste des modifications
-#v 1.00 : 2016-05-02 Première version complète
-#v 1.1 : supression des variables globales
-
-titre = "Portrait de phase d'un pendule"
-
-description="""Représente partiellement le portrait de phase d'une solution de l'équation d'un pendule simple. Seules les trajectoires commençant à theta=0 (avec une grande gamme de vitesses initiales) sont tracées, d'où un portrait de phase non rempli."""
+r"""Portrait de phase d'un pendule
 
 
-#import des bibliothèques python
+Déscription
+-----------
+
+Ce programme permet de représenter partiellement le portrait de phase d'une 
+solution de l'équation d'un pendule simple. Seules les trajectoires commençant à 
+theta=0 (avec une grande gamme de vitesses initiales) sont tracées, d'où un portrait 
+de phase non rempli.
+
+Informations
+------------
+Auteurs : Arnaud Raoux, François Lévrier, Emmanuel Baudin, Pierre Cladé et la prépa agreg de Montrouge
+Année de création : 2016 
+Version : 1.1
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
+
+Liste des modifications:
+    * v 1.00 : 2016-05-02 Première version complète
+    * v 1.1 : supression des variables globales
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import odeint # Pour la resolution d'equations differentielles
 
 from programmes_lecons import justify
 
-# =============================================================================
-# --- Définitions ------------------------------------------------
-# =============================================================================
+
+titre = "Portrait de phase d'un pendule"
+
+description=r"""Représente partiellement le portrait de phase d'une solution 
+de l'équation d'un pendule simple. Seules les trajectoires commençant à 
+$\theta=0$ (avec une grande gamme de vitesses initiales) sont tracées, 
+d'où un portrait de phase non rempli."""
+
+############################################################
+# --- Variables globales et paramètres ---------------------
+############################################################
 
 omega0 = 4 # Pulsation propre en U.A.
 
@@ -35,17 +50,22 @@ Ninit = 20 # nbr de conditions initiales
 dtheta_init_list = np.linspace(-50, 50, Ninit)
 
 
-# =============================================================================
-# --- Fonction intermediaire ------------------------------------------------
-# =============================================================================
+############################################################
+# --- Modèle physique --------------------------------------
+############################################################
 
 def eq_diff(etat_courant, t, omega0):
     """
-    Fonction qui encode l equation differentielle
+    Fonction qui encode l'équation differentielle
     """  
     return np.array([etat_courant[1], -omega0**2*np.sin(etat_courant[0])])
 
 
+############################################################
+# --- Réalisation du plot ----------------------------------
+############################################################
+
+# La fonction plot_data est appelée à chaque modification des paramètres
 def plot_data(ax, omega0):
     """Résolution de l'equation differentielle pour chaque condition intiale"""
 
@@ -57,9 +77,10 @@ def plot_data(ax, omega0):
         ax.plot(-solution[:,0], solution[:,1], color='red', linewidth=1) # la fonction dtheta(theta) etant paire
 
 
-# =============================================================================
-# --- Creation de la figure ------------------------------------------
-# =============================================================================
+############################################################
+# --- Création de la figure et mise en page ----------------
+############################################################
+
 fig = plt.figure()
 fig.suptitle(titre)
 fig.text(0.5, .93, justify(description, 120), multialignment='left', verticalalignment='top', horizontalalignment='center')
@@ -76,5 +97,3 @@ plot_data(ax, omega0=4)
 
 if __name__=="__main__":
     plt.show()
-
-

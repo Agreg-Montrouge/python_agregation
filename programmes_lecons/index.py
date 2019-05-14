@@ -18,4 +18,6 @@ tous_les_programmes = [
     'effet_tunnel'
 ]
 
-
+if  __name__=='__main__':
+    for name in tous_les_programmes:
+        print(name)

@@ -1,23 +1,49 @@
-#Nom du programme : propagation_son.py
+"""Déplacement de poussières dans une onde sonore
 
-#Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Description
+-----------
 
-#Liste des modifications
-#v 1.0 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
-#v 1.1 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
-#v 1.2 : 2019-05-10 Simplification du programme
+Ce programme représente les positions d'un ensemble 
+de poussières soumises à une onde sonore à 2KHz et d'amplitude choisie.
+
+Le choix de représenter des poussières plutôt que des particule du gaz 
+permet de supprimer le problème de la représentation des vitesses thermiques. 
+
+Les zones de compression et dilatation peuvent être directement observées.
+Une poussière rouge est singularisée pour être suivie individuellement.
+Deux graphiques inférieurs représentent le champ de pression et le champ
+de vitesse respectivement. 
+
+ATTENTION : Le niveau sonore de 190 dB SPL correspond à une surpression
+de l'ordre de la pression atmosphèrique! L'hypothèse de perturbation
+pour obtenir l'équation de propagation du son n'est donc pas valide.
+Par ailleurs à ces niveaux la vitesse maximale de la particule fluide
+dépasse la vitesse du son ce qui n'est pas possible. Il faut donc
+prendre cette représentation avec prudence : ces niveaux extrêmes
+sont nécessaires pour pouvoir observer le phénomène dans une classe,
+mais ils ne correspondent pas à une situation réaliste. Au delà de
+185 dB SPL, les champs de vitesse et de pression prédits par la théorie
+et représentés ne correspondent plus à la distribution représentée. 
+
+Informations
+------------
+Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Version : v 1.2
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
+
+Liste des modifications :
+    * v 1.0 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
+    * v 1.1 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+    * v 1.2 : 2019-05-10 Simplification du programme
+
+"""
 
 
 titre = 'Déplacement de poussières dans une onde sonore'
 
 description = """Ce programme représente les positions d'un ensemble de poussières soumises à une onde sonore à 2KHz et d'amplitude choisie.""" 
 
-#Le choix de représenter des poussières plutôt que des particule du gaz permet de supprimer le problème de la représentation des vitesses thermiques. 
-
-#Les zones de compression et dilatation peuvent être directement observées. Une poussière rouge est singularisée pour être suivie individuellement. Deux graphiques inférieurs représentent le champ de pression et le champ de vitesse respectivement. 
-
-
-#ATTENTION : Le niveau sonore de 190 dB SPL correspond à une surpression de l'ordre de la pression atmosphèrique! L'hypothèse de perturbation pour obtenir l'équation de propagation du son n'est donc pas valide. Par ailleurs à ces niveaux la vitesse maximale de la particule fluide dépasse la vitesse du son ce qui n'est pas possible. Il faut donc prendre cette représentation avec prudence : ces niveaux extrêmes sont nécessaires pour pouvoir observer le phénomène dans une classe, mais ils ne correspondent pas à une situation réaliste. Au delà de 185 dB SPL, les champs de vitesse et de pression prédits par la théorie et représentés ne correspondent plus à la distribution représentée. 
 
 
 import numpy as np
@@ -30,7 +56,10 @@ from programmes_lecons import make_param_widgets, make_choose_plot, make_reset_b
 from programmes_lecons import justify
 
 
-# Constantes globales et paramètres
+############################################################
+# --- Variables globales et paramètres ---------------------
+############################################################
+
 cs = 340. #Vitesse du son en m/s
 Pr = 2E-5 #Pression de référence (Pa) pour le calcul du niveau sonore en dB SPL
 P0 = 1.01325E5 #Pression atmospherique moyenne (Pa)
@@ -44,7 +73,10 @@ parameters = dict(
 )
 
 
-# Creation des ondes 1 et 2
+############################################################
+# --- Modèle physique --------------------------------------
+############################################################
+
 def onde_pression(x, A,  t):
 	return (A*np.sin(2.*pi/lambda0*(x-cs*t)))
 
@@ -55,7 +87,31 @@ def poussieres(x, y, A,  t):
 	return ((x + A*np.cos(2.*pi/lambda0*(x-cs*t)))), 2*(y-0.5)
 
 
-# Création de la figure, mise en page
+############################################################
+# --- Réalisation du plot ----------------------------------
+############################################################
+
+# La fonction plot_data est appelée à chaque modification des paramètres
+def plot_data(L, T):
+    AP = (10.**(L/20.))*np.sqrt(2)*Pr #Amplitude de pression sonore. 
+    A = AP/P0*lambda0/2./pi #Amplitude du déplacement sonore.
+    Av = AP/rho0/cs #Amplitude de la vitesse des particules de poussiere
+
+    T = T/1000. #Valeur recuperee en s
+
+    lines['points'].set_data(*poussieres(part_x, part_y, A, T))
+    lines['point_rouge'].set_data(*poussieres(np.array([0.5]), np.array([0.5]), A, T))
+    
+    lines['pression'].set_data(x_graph, onde_pression(x_graph, AP,  T))
+    lines['vitesse'].set_data(x_graph, onde_vitesse(x_graph, Av, T))
+
+    fig.canvas.draw_idle()
+
+
+############################################################
+# --- Création de la figure et mise en page ----------------
+############################################################
+
 fig = plt.figure()
 fig.suptitle(titre)
 fig.text(0.5, .93, description, multialignment='left', verticalalignment='top', horizontalalignment='center')
@@ -90,31 +146,24 @@ part_x, part_y = np.random.rand(2, n)
 
 x_graph = np.linspace(0, 1, 1001)
 
-def plot_data(L, T):
-    AP = (10.**(L/20.))*np.sqrt(2)*Pr #Amplitude de pression sonore. 
-    A = AP/P0*lambda0/2./pi #Amplitude du déplacement sonore.
-    Av = AP/rho0/cs #Amplitude de la vitesse des particules de poussiere
-
-    T = T/1000. #Valeur recuperee en s
-
-    lines['points'].set_data(*poussieres(part_x, part_y, A, T))
-    lines['point_rouge'].set_data(*poussieres(np.array([0.5]), np.array([0.5]), A, T))
-    
-    lines['pression'].set_data(x_graph, onde_pression(x_graph, AP,  T))
-    lines['vitesse'].set_data(x_graph, onde_vitesse(x_graph, Av, T))
-
-    fig.canvas.draw_idle()
 
 param_widgets = make_param_widgets(parameters, plot_data, slider_box=[0.35, 0.07, 0.4, 0.10])
 reset_button = make_reset_button(param_widgets)
 
+############################################################
+# --- Animation --------------------------------------------
+############################################################
+
+start_animation = False # Est-ce que l'animation se lance automatiquement ? 
+
 def animation_function(val):
     param_widgets['T'].set_val((val/100)%1)
+    if val==0 and start_animation==False:
+        ani.event_source.stop()
+    return lines.values()
 
 ani = animation.FuncAnimation(fig, animation_function, interval=100.0)
-
-
-anim_btn = make_start_stop_animation(ani)
+anim_btn = make_start_stop_animation(ani, start_animation=start_animation)
 
 if __name__=='__main__':
     plt.show()

@@ -1,18 +1,29 @@
+"""Propatation d'un paquet d'onde avec dispersion
 
-#Auteurs : Vincent Lusset, Arnaud Raoux, Pierre Cladé et la prépa agreg de Montrouge
+Description
+-----------
 
-#Année de création : 2018
-#Version : 1.1
+Ce programme permet d'observer l'effet de la dispersion sur la propagation 
+d'une onde, et en particulier de faire la différence entre vitesse de phase 
+et vitesse de groupe.
 
-#Liste des modifications
-#v 1.00 : 2018-03-01 Première version complète
-#v 1.10 : 2019-03-12 Amélioration, simplification et nettoyage du code
-#v 1.2  : 2019-05-10 Calcul en temps réel. 
+Formules
+--------
 
-#Version de Python
-#3.6
+Informations
+------------
+Auteurs : Vincent Lusset, Arnaud Raoux, Pierre Cladé et la prépa agreg de Montrouge
+Année de création : 2018
+Version : 1.2
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
-#import des bibliothèques/fonctions python
+Liste des modifications :
+    * v 1.00 : 2018-03-01 Première version complète
+    * v 1.10 : 2019-03-12 Amélioration, simplification et nettoyage du code
+    * v 1.2  : 2019-05-10 Calcul en temps réel. 
+"""
+
 import matplotlib.pyplot as plt
 from matplotlib import animation
 import numpy as np
@@ -27,19 +38,14 @@ from programmes_lecons import justify
 
 titre =  r"Propatation d'un paquet d'onde avec dispersion"
 
-description = "Ce programme permet d'observer l'effet de la dispersion sur la propagation d'une onde, et en particulier de faire la différence entre vitesse de phase et vitesse de groupe."
+description = """Ce programme permet d'observer l'effet de la dispersion 
+sur la propagation d'une onde, et en particulier de faire la différence 
+entre vitesse de phase et vitesse de groupe."""
 
 
-# =============================================================================
-# --- Définitions ------------------------------------------------
-# =============================================================================
-
-Xmin = -2
-Xmax = 10.0 #échelle max selon l'axe de propagation
-
-NbEchantillons=3000 # Échantillonage spatial
-
-x = np.linspace(Xmin, Xmax, NbEchantillons) # x est ici un array en ligne
+############################################################
+# --- Variables globales et paramètres ---------------------
+############################################################
 
 T=0.25 #période de l'onde
 
@@ -54,9 +60,9 @@ parameters = dict(
     t = FloatSlider(description='$t$ (ms)', min=0, max=10., value=0),
     )
 
-# =============================================================================
-# --- Modèles ------------------------------------------
-# =============================================================================
+############################################################
+# --- Modèle physique --------------------------------------
+############################################################
 
 def enveloppe(t, x):
     att = 1+(t/tau)**2
@@ -67,7 +73,18 @@ def amplitude(t, x):
     return enveloppe(t, x) * cos(2*pi/T*(t-x/vphi))
 
 
-# On construit des matrices où chaque ligne correspond à un instant t donné.
+Xmin = -2
+Xmax = 10.0 #échelle max selon l'axe de propagation
+
+NbEchantillons=3000 # Échantillonage spatial
+x = np.linspace(Xmin, Xmax, NbEchantillons) # x est ici un array en ligne
+
+
+############################################################
+# --- Réalisation du plot ----------------------------------
+############################################################
+
+# La fonction plot_data est appelée à chaque modification des paramètres
 def plot_data(t):
     att = 1+(t/tau)**2
     lines['courbe'].set_data(x, amplitude(t, x))
@@ -81,9 +98,9 @@ def plot_data(t):
 
     
 
-# =============================================================================
-# --- Création de la figure et mise en page -------------------------
-# =============================================================================
+############################################################
+# --- Création de la figure et mise en page ----------------
+############################################################
 
 fig = plt.figure()
 fig.suptitle(titre)
@@ -105,14 +122,15 @@ lines['enveloppes_m'], = ax.plot([], [], 'r--')
 lines['points_vg'], = ax.plot([], [], 'ro')  # point rouge avançant à vg
 lines['points_vphi'], = ax.plot([], [], 'bo') # point bleu avançant à vphi
 
-# =============================================================================
-# --- Animation ------------------------------------------
-# =============================================================================
-
 
 param_widgets = make_param_widgets(parameters, plot_data, slider_box=[0.08+0.84*2/12, 0.01, 0.84*10/12, 0.05])
 
-start_animation = False
+############################################################
+# --- Animation --------------------------------------------
+############################################################
+
+start_animation = False # Est-ce que l'animation se lance automatiquement ? 
+
 def animation_function(val):
     param_widgets['t'].set_val((val/10)%10)
     # Astuce permettant de stopper l'animation tout de suite
@@ -121,7 +139,6 @@ def animation_function(val):
     return lines.values()
 
 ani = animation.FuncAnimation(fig, animation_function, interval=100.0)
-
 anim_btn = make_start_stop_animation(ani, box=[0.01, 0.01, 0.07, 0.1], start_animation=start_animation)
 
 if __name__=="__main__":

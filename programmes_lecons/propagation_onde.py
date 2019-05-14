@@ -1,18 +1,26 @@
-#Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
+r"""Reflexion des ondes sonores planes harmoniques propagatives
 
+Description
+-----------
+Ce programme représente l'effet d'une barrière d'amplitude du coefficient 
+de reflexion $r$ sur une onde sonore plane harmonique propagative. 
 
-#Année de création : 2016 
-#Version : 1.2
+La réflexion est représentée spatialement, le temps pouvant être varié indépendamment. 
 
-#Liste des modifications
-#v 1.00 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
-#v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
-#v 1.2
+Informations
+------------
+Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Année de création : 2016 
+Version : 1.2
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
-#Version Python
-#3.6
+Liste des modifications :
+    * v 1.00 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
+    * v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
+    * v 1.2 : 2019-05-10
+"""
 
-#import des bibliothèques python
 import numpy as np
 from numpy import pi, exp
 import matplotlib.pyplot as plt
@@ -31,7 +39,10 @@ Ce programme représente l'effet d'une barrière d'amplitude du coefficient de r
 
 
 
-# Parametres de la fonction, avec des valeurs par defaut
+############################################################
+# --- Variables globales et paramètres ---------------------
+############################################################
+
 c = 340 # Vitesse du son en m/s
 
 parameters = dict(
@@ -42,7 +53,10 @@ parameters = dict(
     )
 
 
-# Modèle utilisé
+############################################################
+# --- Modèle physique --------------------------------------
+############################################################
+
 def oscillation(t, x, amp, freq, refl, phase_refl=0):
     left = np.real(amp*exp(2J*pi*freq*(t-x/c))+amp*refl*exp(1J*phase_refl)*exp(2J*pi*freq*(t+x/c)))
     right = np.real(amp*(1.+refl*exp(1J*phase_refl))*exp(2J*pi*freq*(t-x/c)))
@@ -50,13 +64,21 @@ def oscillation(t, x, amp, freq, refl, phase_refl=0):
 
 x = np.linspace(-1., 1., 1001)
 
+############################################################
+# --- Réalisation du plot ----------------------------------
+############################################################
+
+# La fonction plot_data est appelée à chaque modification des paramètres
 def plot_data(t, freq, amp, refl):
     t = t*1E-3
     lines['data'].set_data(x, oscillation(t, x, amp, freq, refl))
 
     fig.canvas.draw_idle()
 
-# Création de la figure et mise en page
+############################################################
+# --- Création de la figure et mise en page ----------------
+############################################################
+
 fig = plt.figure()
 fig.suptitle(titre)
 fig.text(0.02, .9, justify(description), multialignment='left', verticalalignment='top')
@@ -79,12 +101,14 @@ ax.axvline(0, linestyle='--', color='k')
 param_widgets = make_param_widgets(parameters, plot_data, slider_box=[0.45, 0.07, 0.4, 0.15])
 reset_button = make_reset_button(param_widgets)
 
+############################################################
+# --- Animation --------------------------------------------
+############################################################
+
 def animation_function(val):
     param_widgets['t'].set_val((val/50)%1)
 
 ani = animation.FuncAnimation(fig, animation_function, interval=100.0)
-
-
 anim_btn = make_start_stop_animation(ani)
 
 

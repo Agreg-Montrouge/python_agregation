@@ -1,22 +1,21 @@
-#Nom du programme : EcoulementCouette
+"""Écoulement de Couette plan
 
-#Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
+Description
+-----------
+Ce programme représente le champ de vitesse dans un ecoulement Couette plan
 
-#Année de création : 2016 
-#Version : 1.1
+Informations
+------------
+Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier et la prépa agreg de Montrouge
+Année de création : 2016 
+Version : 1.1
+Version de Python : 3.6
+Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
-#Liste des modifications
-#v 1.0 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
-
-#Version de Python
-#3.4
-
-#LICENCE
-#Cette oeuvre, création, site ou texte est sous licence Creative Commons Attribution - Pas d'Utilisation Commerciale 4.0 International. Pour accéder à une copie de cette licence, merci de vous rendre à l'adresse suivante http://creativecommons.org/licenses/by-nc/4.0/ ou envoyez un courrier à Creative Commons, 444 Castro Street, Suite 900, Mountain View, California, 94041, USA.
-
-#Description : 
-#Ce programme représente le champ de vitesse dans un ecoulement Couette plan
-
+Liste des modifications :
+  * v 1.0 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
+  * v 1.1 : 2019-05-10
+"""
 import matplotlib.pyplot as plt
 import numpy as np
 
