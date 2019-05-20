@@ -33,8 +33,12 @@ from programmes_lecons import justify
 
 titre = 'Reflexion des ondes sonores planes harmoniques propagatives'
 
-description="""
+description=r"""
 Ce programme représente l'effet d'une barrière d'amplitude du coefficient de reflexion $r$ sur une onde sonore plane harmonique propagative. La réflexion est représentée spatialement, le temps pouvant être varié indépendamment. 
+
+$r = \frac{Z_2-Z_1}{Z_2+Z_1}$
+
+$t = 1 + r$
 """
 
 
@@ -48,8 +52,9 @@ c = 340 # Vitesse du son en m/s
 parameters = dict(
     t = FloatSlider(description='Temps -- $t$ (ms)', min=0, max=2., value=0),
     freq = FloatSlider(description='Fréquence -- $f$ (Hz)', min=500, max=1500.0, value=1000),
-    amp = FloatSlider(description='Amplitude -- $A$ (V)', min=0.0, max=10.0, value=5),
-    refl = FloatSlider(description='Réflexion -- $r$', min=-1., max=1., value=0),
+    amp = FloatSlider(description='Amplitude -- $A$ (V)', min=0.0, max=10.0, value=4),
+#    refl = FloatSlider(description='Réflexion -- $r$', min=-1., max=1., value=0),
+    Z2 = FloatSlider(description='Impedance -- $Z_2$', min=0, max=10., value=1),
     )
 
 
@@ -69,9 +74,12 @@ x = np.linspace(-1., 1., 1001)
 #===========================================================
 
 # La fonction plot_data est appelée à chaque modification des paramètres
-def plot_data(t, freq, amp, refl):
+def plot_data(t, freq, amp, Z2):
+    refl = (Z2-1)/(1+Z2)
     t = t*1E-3
     lines['data'].set_data(x, oscillation(t, x, amp, freq, refl))
+    lines['coef_refl'].set_text('r = {:4.2f}; t = {:4.2f}'.format(refl, 1+refl))
+    lines['Z2'].set_text('$Z_2={:4.2f}$'.format(Z2))
 
     fig.canvas.draw_idle()
 
@@ -87,7 +95,9 @@ ax = fig.add_axes([0.35, 0.3, 0.6, 0.6])
 
 lines = {}
 lines['data'], = ax.plot([],[], lw=2, color='red')
-
+lines['coef_refl'] = ax.text(-.7, -9, '')
+lines['Z1'] = ax.text(-.75, 9, '$Z_1=1$')
+lines['Z2'] = ax.text(.75, 9, '')
 
 ax.set_xlabel('Position (m)')
 ax.set_ylabel('Amplitude (u.a.)')

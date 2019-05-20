@@ -47,11 +47,11 @@ de modifier la température du corps noir pour observer les effets.
 
 Les lois de Rayleigh-Jeans et de Wien ont aussi été implémentées pour comparaison.
 
-Planck : $\frac{2h\nu^3}{c^2 (e^{h\nu/kT} -1)}$
+Planck : $\frac{2hc^2}{\lambda^5 (e^{hc/(\lambda kT)} -1)}$
 
-Wien : $\frac{2h\nu^3}{c^2 e^{h\nu/kT}}$
+Wien : $\frac{2hc^2}{\lambda^5 e^{hc/(\lambda kT)}}$
 
-Rayleigh-Jeans: $\frac{2kT\nu^2}{c^2}$
+Rayleigh-Jeans: $\frac{2kTc}{\lambda^4}$
 
 """
 
@@ -69,14 +69,24 @@ parameters = {
 # --- Modèle physique --------------------------------------
 #===========================================================
 
-def loi_de_planck(T, nu):
+def loi_de_planck_nu(T, nu):
     return 2*h*nu**3/c**2 * 1/(np.exp(h*nu/(k*T)) - 1 )
 
-def loi_de_rayleigh_jeans(T, nu):
+def loi_de_rayleigh_jeans_nu(T, nu):
     return 2*k*T*nu**2/c**2
 
-def loi_de_wien(T, nu):
+def loi_de_wien_nu(T, nu):
     return 2*h*nu**3/c**2 * 1/(np.exp(h*nu/(k*T)))
+
+
+def loi_de_planck_lamb(T, lamb):
+    return loi_de_planck_nu(T, c/lamb)*c/lamb**2
+
+def loi_de_rayleigh_jeans_lamb(T, lamb):
+    return loi_de_rayleigh_jeans_nu(T, c/lamb)*c/lamb**2
+
+def loi_de_wien_lamb(T, lamb):
+    return loi_de_wien_nu(T, c/lamb)*c/lamb**2
 
 
 #===========================================================
@@ -86,9 +96,15 @@ def loi_de_wien(T, nu):
 # La fonction plot_data est appelée à chaque modification des paramètres
 def plot_data(T):
 
-    lines['Planck'].set_data(nu, loi_de_planck(T, nu))
-    lines['Wien'].set_data(nu, loi_de_wien(T, nu))
-    lines['Rayleigh-Jeans'].set_data(nu, loi_de_rayleigh_jeans(T, nu))
+    lines['Planck'].set_data(lamb*1E6, loi_de_planck_lamb(T, lamb)*1E-12)
+    lines['Wien'].set_data(lamb*1E6, loi_de_wien_lamb(T, lamb)*1E-12)
+    lines['Rayleigh-Jeans'].set_data(lamb*1E6, loi_de_rayleigh_jeans_lamb(T, lamb)*1E-12)
+
+    i = loi_de_planck_lamb(T, lamb).argmax()
+    lines['max'].set_data([lamb[i]*1E6], [loi_de_planck_lamb(T, lamb[i])*1E-12])
+
+    i = loi_de_wien_lamb(T, lamb).argmax()
+    lines['maxW'].set_data([lamb[i]*1E6], [loi_de_wien_lamb(T, lamb[i])*1E-12])
 
     fig.canvas.draw_idle()
 
@@ -103,31 +119,36 @@ fig.text(0.02, .9, justify(description), multialignment='left', verticalalignmen
 
 ax = fig.add_axes([0.35, 0.3, 0.6, 0.6])
 
-ax.axvline(6.7E14,lw=2, color='purple') #violet
-ax.axvline(5.7E14,lw=2, color='green') #vert
-ax.axvline(4.6E14,lw=2, color='red') #rouge
+ax.axvline(c/6.7E14*1E6,lw=2, color='purple') #violet
+ax.axvline(c/5.7E14*1E6,lw=2, color='green') #vert
+ax.axvline(c/4.6E14*1E6,lw=2, color='red') #rouge
 
-ax.text(4.7E14, 5e-8, "rouge :  633 nm", color='red', rotation='vertical',horizontalalignment='left', verticalalignment='top')
-ax.text(5.8E14, 5e-8, "vert : 525 nm", color='green', rotation='vertical',horizontalalignment='left', verticalalignment='top')
-ax.text(6.8E14, 5e-8, "violet : 425 nm", color='purple', rotation='vertical',horizontalalignment='left', verticalalignment='top')
+ax.text(c/4.5E14*1E6, 14, "rouge :  633 nm", color='red', rotation='vertical',horizontalalignment='left', verticalalignment='top')
+ax.text(c/5.6E14*1E6, 14, "vert : 525 nm", color='green', rotation='vertical',horizontalalignment='left', verticalalignment='top')
+ax.text(c/6.5E14*1E6, 14, "violet : 425 nm", color='purple', rotation='vertical',horizontalalignment='left', verticalalignment='top')
 
 lines = {}
-lines['Planck'], = ax.plot([], [], lw=2, color='blue',visible=True)
+lines['Planck'], = ax.plot([], [], lw=2, color='blue', visible=True)
 lines['Wien'], = ax.plot([], [], lw=2,color='black', visible=False)
 lines['Rayleigh-Jeans'], = ax.plot([], [], lw=2, color='brown',visible=False)
 
-nu = np.logspace(np.log10(1E13),np.log10(1.2E15),num=1001)
+lines['max'], = ax.plot([], [], 'o', markersize=15, color='blue')
+lines['maxW'], = ax.plot([], [], 'o', markersize=15, color='black', visible=False)
 
-ax.set_xlim(nu.min(), nu.max())
-ax.set_ylim(5E-11, 5E-8)
 
-ax.set_xlabel(r"$\nu$ [$\mathrm{Hz}$]")
-ax.set_ylabel(r"$B_\nu$ [$\mathrm{W.m^{-2}.Hz^{-1}.sr^{-1}}$]")
+lamb = np.logspace(-7, -5.5,num=1001)
+
+ax.set_xlim(lamb.min()*1E6, lamb.max()*1E6)
+ax.set_ylim(0, 30)
+
+ax.set_xlabel(r"$\lambda$ [$\mathrm{\mu m}$]")
+#ax.set_ylabel(r"$B_\nu$ [$\mathrm{W.m^{-2}.Hz^{-1}.sr^{-1}}$]")
+ax.set_ylabel(r"$B_\nu$ [$\mathrm{kW.m^{-2}.nm^{-1}.sr^{-1}}$]")
 
 param_widgets = make_param_widgets(parameters, plot_data, slider_box=[0.35, 0.07, 0.4, 0.05])
-choose_widget = make_choose_plot(lines, box=[0.015, 0.25, 0.2, 0.15])
+choose_widget = make_choose_plot(lines, box=[0.015, 0.25, 0.2, 0.15], which=[('Planck', 'max'), ('Wien', 'maxW'), 'Rayleigh-Jeans'])
 reset_button = make_reset_button(param_widgets)
-log_button =  make_log_button(ax)
+log_button =  make_log_button(ax, ylims={'log':(0.001, 1000), 'linear':ax.get_ylim()})
 
 if __name__=='__main__':
     plt.show()

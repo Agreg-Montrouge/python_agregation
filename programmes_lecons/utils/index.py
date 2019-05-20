@@ -15,8 +15,12 @@ tous_les_programmes = [
     'portrait_de_phase',
     'propagation_avec_dispersion',
     'propagation_son', 
-    'effet_tunnel'
+    'effet_tunnel',
+    'diffusion_particules',
+    'orbites_kepler'
 ]
+
+tous_les_programmes = list(sorted(tous_les_programmes))
 
 if  __name__=='__main__':
     for name in tous_les_programmes:

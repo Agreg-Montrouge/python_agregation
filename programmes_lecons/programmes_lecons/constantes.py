@@ -14,3 +14,13 @@ mu0 = 12.566370614e-7 # Magnetic permeability
 epsilon0 = 8.854187817e-12 # Electric permittivity
 amu = 1.66053886e-27  # Atomic mass unit
 
+
+# Astronimie
+G = 6.67408e-11 # Constante de la gravitation en m3.kg-1.s-2
+Msun = 1.988e30 # Masse du Soleil en kg
+Mearth = 5.9722e24 # Masse de la Terre en kg
+UA = 1.495978707e11 # Unite astronomique en m
+an = 365.0*86400. # annee en s
+
+
+

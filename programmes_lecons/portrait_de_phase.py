@@ -65,8 +65,7 @@ def eq_diff(etat_courant, t, omega0):
 # --- Réalisation du plot ----------------------------------
 #===========================================================
 
-# La fonction plot_data est appelée à chaque modification des paramètres
-def plot_data(ax, omega0):
+def plot_static_data(ax, omega0):
     """Résolution de l'equation differentielle pour chaque condition intiale"""
 
     for dtheta_init in dtheta_init_list:
@@ -92,7 +91,7 @@ ax.set_ylabel(r'$\dot \theta$')
 ax.set_xlim(-8,8)
 ax.set_xlabel(r'$\theta$')
 
-plot_data(ax, omega0=4)
+plot_static_data(ax, omega0=4)
 #ax.axis('equal')
 
 if __name__=="__main__":

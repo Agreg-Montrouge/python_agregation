@@ -40,7 +40,7 @@ frequence_signal = 10
 duree_acquisition = 1 
 
 parameters = {
-    'freq_ech': FloatSlider(value=11, description="Échantillionage -- $f_\mathrm{ech}$ (Ech/s)", max=60.0, min=5),
+    'freq_ech': FloatSlider(value=31, description="Échantillionage -- $f_\mathrm{ech}$ (Ech/s)", max=60.0, min=5),
 }
 
 

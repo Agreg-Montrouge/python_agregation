@@ -10,7 +10,7 @@ def justify_paragraph(string, width=40):
         out[-1] += ' ' + word
         if word.endswith('$'):
             in_equation = False
-
+    out = [elm for elm in out if elm.strip()] # Remove blanck lines
     return '\n'.join(out)
 
 def justify(string, width=40):

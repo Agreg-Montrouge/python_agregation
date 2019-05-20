@@ -72,7 +72,7 @@ approx = 1.3 # Valeur minimale acceptable pour K*d afin que l'approximation de b
 
 parameters = {
     'E_max':FloatSlider(value=6, min=0, max=12, description="E_max"),
-    'd':FloatSlider(value=2, min=0, max=6, description='d')
+    'd':FloatSlider(value=2, min=0, max=6, description='Épaisseur de la barrière -- d')
 }
 
 
@@ -115,6 +115,8 @@ def plot_data(E_max=6, d=2):
     lines['Quantique'].set_data(E_abscisse, T_exact)
     lines['Classique'].set_data(E_abscisse, T_classique)
     lines['barriere large'].set_data(E_abscisse[validite_large_barriere], T_large_barriere[validite_large_barriere])
+
+    ax.set_xlim(0, E_max)
 
     fig.canvas.draw_idle()
 
