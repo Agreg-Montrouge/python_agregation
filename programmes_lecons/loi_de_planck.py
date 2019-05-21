@@ -42,10 +42,9 @@ from programmes_lecons.constantes import c, h, k
 titre = r'Loi de Planck'
 
 description = r"""Ce programme représente la loi de Planck du corps noir en 
-fonction de la fréquence du rayonnement électromagnétique. Il est possible 
-de modifier la température du corps noir pour observer les effets. 
+fonction de la fréquence du rayonnement électromagnétique.
 
-Les lois de Rayleigh-Jeans et de Wien ont aussi été implémentées pour comparaison.
+Les lois de Rayleigh-Jeans et de Wien sont également tracées.
 
 Planck : $\frac{2hc^2}{\lambda^5 (e^{hc/(\lambda kT)} -1)}$
 

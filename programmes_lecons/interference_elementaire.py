@@ -7,16 +7,16 @@ deux ondes harmoniques monochromatiques.
 
 Attention : les deux ondes sont supposées planes, scalaires et l'interférence 
 intervient le long de leur propagation comme dans un interféromètre de Michelson,
-mais pas comme dans un dispositif de Fente d'Young. 
+mais pas comme dans un dispositif de fentes d'Young. 
 
 La somme des deux ondes est représentée sur la fenêtre du bas.
 
 Informations
 ------------
-Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Auteurs : Emmanuel Baudin, Arnaud Raoux, François Levrier, Pierre Cladé et la prépa agreg de Montrouge
 Année de création : 2016 
 Version : 1.2
-Version de Python : 3.6
+Version de Python : 3.7
 Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
 Liste des modifications: 
@@ -29,7 +29,7 @@ titre = 'Interférence de deux ondes harmoniques'
 
 description = """Ce programme permet d'illustrer le principe élémentaire de l'interférence de deux ondes harmoniques monochromatiques. 
 
-Attention : les deux ondes sont supposées planes, scalaires et l'interférence intervient le long de leur propagation comme dans un interféromètre de Michelson, mais pas comme dans un dispositif de Fente d'Young. 
+Attention : les deux ondes sont supposées planes, scalaires et l'interférence intervient le long de leur propagation comme dans un interféromètre de Michelson, mais pas comme dans un dispositif de fentes d'Young. 
 
 La somme des deux ondes est représentée sur la fenêtre du bas."""
 
