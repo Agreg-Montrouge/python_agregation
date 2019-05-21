@@ -95,12 +95,16 @@ samp = Slider(axamp, '$A$ (V)', 0.0, 10.0, valinit=a0) # Remarquer la valeur ini
 srefl = Slider(axrefl, '$r$ (s.d.)', -1., 1., valinit=ra0) # Remarquer la valeur initiale ra0
 
 # Fonction de mise a jour du graphique
+n = 0
 def update(val):
+    global n
+    print(n)
+    n += 1
     amp = samp.val # On recupere la valeur de la barre samp comme amplitude
     freq = sfreq.val # On recupere la valeur de la barre sfreq comme frequence
     t = stemps.val/10**3 # On recupere la valeur de la barre stemps comme un temps (en ms)
     refl = srefl.val # On recupere la valeur de la barre srefl comme un coefficient de reflexion
-    l.set_ydata(Oscillation (t, x, amp, freq, refl, rp0)) # On met a jour l'objet 'l' avec ces nouvelles valeurs 
+    l.set_data(x, Oscillation(t, x, amp, freq, refl, rp0)) # On met a jour l'objet 'l' avec ces nouvelles valeurs 
     fig.canvas.draw_idle() # On provoque la mise a jour du graphique, qui n'est pas automatique par defaut
 sfreq.on_changed(update) # lorsque la barre sfreq est modifiee, on applique la fonction update
 samp.on_changed(update) # lorsque la barre samp est modifiee, on applique la fonction update
