@@ -2,9 +2,7 @@ r"""Interférence par des fentes d'Young
 
 Description
 -----------
-Ce programme représente la figure d'interférence obtenue lorsqu'une onde 
-plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif de fentes 
-d'Young éloignées d'une distance $a$ (centre-centre) et de largeur $w$. 
+Ce programme représente la figure d'interférence obtenue lorsqu'une onde plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif de fentes d'Young éloignées d'une distance $a$ (centre-centre) et de largeur $w$. 
 L'écran est positionné à une distance $L$ des fentes.
 
 Formules
@@ -13,7 +11,7 @@ $I = \sinc\left(\frac{kwx}{2L}\right)^2 \cos\left(\frac{kax}{2L}\right)^2$
 
 Informations
 ------------
-Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Auteurs : Emmanuel Baudin, Arnaud Raoux, François Levrier, Pierre Cladé et la prépa agreg de Montrouge
 Année de création : 2016 
 Version : 1.2
 Version de Python : 3.6
@@ -53,7 +51,7 @@ $I = \sinc\left(\frac{kwx}{2L}\right)^2 \cos\left(\frac{kax}{2L}\right)^2$
 
 parameters = {
     # Remarquer la valeur initiale de lambda : 633 nm
-    'lamb': FloatSlider(value=633, description="Longeur d'onde -- $\lambda$ (nm)", min=400, max=800), 
+    'lamb': FloatSlider(value=633, description="Longueur d'onde -- $\lambda$ (nm)", min=400, max=800), 
     'a': FloatSlider(value=1.0, description='Distance entre les fentes -- $a$ (mm)', min=0.5, max=3.0),
     'w': FloatSlider(value=100, description="Largeur d'une fente -- $w$ ($\mu$m)", min=10, max=300),
     'L': FloatSlider(value=1, description="Distance fentes-écran -- $L$ (m)", min=.3, max=2),
@@ -76,7 +74,7 @@ def fente_young(x, k, L, a, w):
 # --- Réalisation du plot ----------------------------------
 #===========================================================
 
-# La fonction plot_data est appelée à chaque modification des paramètres
+# La fonction plot_data est appelée Ã  chaque modification des paramètres
 def plot_data(lamb, a, w, L):
     # Conversion en SI
     lamb = lamb*1E-9

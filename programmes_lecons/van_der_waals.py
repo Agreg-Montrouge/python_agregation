@@ -33,7 +33,7 @@ from programmes_lecons import justify
 titre = 'Transition liquide-vapeur pour un fluide de Van der Waals'
 
 description = """Ce programme représente le diagramme PV en unités
-réduite d'un fluide respectant l'équation d'état de Van der Waals. 
+réduites d'un fluide respectant l'équation d'état de Van der Waals. 
 Les références de température, pression et volume sont prises
 au point critique. 
 """

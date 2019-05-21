@@ -13,7 +13,7 @@ Informations
 Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
 Année de création : 2016 
 Version : 1.2
-Version de Python : 3.6
+Version de Python : 3.7
 Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
 Liste des modifications :
@@ -33,7 +33,7 @@ from programmes_lecons import justify
 
 titre = "Diffusion de particules"
 
-description = """Ce programme représente l'évolution de la distribution spatiale de densité de particules lors d'une diffusion 1D. Il est possible de faire varier le temps, le nombre de particules initialement considérées (le problème est conservatif) et le coeffcient de diffusion $D$."""
+description = """Ce programme représente l'évolution de la distribution spatiale de densité de particules lors d'une diffusion 1D. Il est possible de faire varier le temps, le nombre de particules initialement considérées (le problème est conservatif) et le coefficient de diffusion $D$."""
 
 #===========================================================
 # --- Variables globales et paramètres ---------------------
