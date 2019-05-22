@@ -7,6 +7,7 @@ tous_les_programmes = [
     'loi_de_planck',
     'fentes_young',
     'propagation_son',
+    'propagation_onde',
     'interference_elementaire',
     'diffraction_N_fentes',
     'ecoulement_couette',
@@ -14,7 +15,6 @@ tous_les_programmes = [
     'echantillonage_filtrage',
     'portrait_de_phase',
     'propagation_avec_dispersion',
-    'propagation_son', 
     'effet_tunnel',
     'diffusion_particules',
     'orbites_kepler'
