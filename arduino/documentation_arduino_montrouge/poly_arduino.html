@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html class="client-js" dir="ltr" lang="fr"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<title>Microcontroleurs — Agrégation de Physique</title>
+<script>document.documentElement.className = document.documentElement.className.replace( /(^|\s)client-nojs(\s|$)/, "$1client-js$2" );</script>
+<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgCanonicalNamespace":"","wgCanonicalSpecialPageName":false,"wgNamespaceNumber":0,"wgPageName":"Microcontroleurs","wgTitle":"Microcontroleurs","wgCurRevisionId":17499,"wgRevisionId":17499,"wgArticleId":3436,"wgIsArticle":true,"wgIsRedirect":false,"wgAction":"view","wgUserName":null,"wgUserGroups":["*"],"wgCategories":[],"wgBreakFrames":false,"wgPageContentLanguage":"fr","wgPageContentModel":"wikitext","wgSeparatorTransformTable":[",\t."," \t,"],"wgDigitTransformTable":["",""],"wgDefaultDateFormat":"dmy","wgMonthNames":["","janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"],"wgMonthNamesShort":["","jan","fév","mar","avr","mai","juin","juil","août","sep","oct","nov","déc"],"wgRelevantPageName":"Microcontroleurs","wgRelevantArticleId":3436,"wgRequestId":"4e5fbae709b29e8f3c1164e3","wgIsProbablyEditable":false,"wgRestrictionEdit":[],"wgRestrictionMove":[]});mw.loader.state({"site.styles":"ready","noscript":"ready","user.styles":"ready","user":"ready","user.options":"loading","user.tokens":"loading","ext.math.styles":"ready","mediawiki.legacy.shared":"ready","mediawiki.legacy.commonPrint":"ready","mediawiki.sectionAnchor":"ready","mediawiki.skinning.interface":"ready","skins.vector.styles":"ready"});mw.loader.implement("user.options@1x2qlv5",function($,jQuery,require,module){mw.user.options.set({"variant":"fr"});});mw.loader.implement("user.tokens@0x33u11",function ( $, jQuery, require, module ) {
+mw.user.tokens.set({"editToken":"+\\","patrolToken":"+\\","watchToken":"+\\","csrfToken":"+\\"});/*@nomin*/;
+
+});mw.loader.load(["mediawiki.toc","mediawiki.action.view.postEdit","site","mediawiki.page.startup","mediawiki.user","mediawiki.hidpi","mediawiki.page.ready","mediawiki.searchSuggest","skins.vector.js"]);});</script>
+<link rel="stylesheet" href="poly_arduino_fichiers/load.css">
+<script async="" src="poly_arduino_fichiers/load_002.es"></script>
+<style>
+.suggestions{overflow:hidden;position:absolute;top:0;left:0;width:0;border:0;z-index:1099;padding:0;margin:-1px 0 0 0}.suggestions-special{position:relative;background-color:#fff;cursor:pointer;border:solid 1px #aaa;margin:0;margin-top:-2px;display:none;padding:0.25em 0.25em;line-height:1.25em}.suggestions-results{background-color:#fff;cursor:pointer;border:solid 1px #aaa;padding:0;margin:0}.suggestions-result{color:#000;margin:0;line-height:1.5em;padding:0.01em 0.25em;text-align:left; overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}.suggestions-result-current{background-color:#4c59a6;color:#fff}.suggestions-special .special-label{color:#808080;text-align:left}.suggestions-special .special-query{color:#000;font-style:italic;text-align:left}.suggestions-special .special-hover{background-color:#c0c0c0}.suggestions-result-current .special-label,.suggestions-result-current .special-query{color:#fff}.highlight{font-weight:bold}
+@media screen {
+	.tochidden,.toctoggle{-moz-user-select:none;-webkit-user-select:none;-ms-user-select:none;user-select:none}.toctoggle{font-size:94%}}
+@media print {
+	#toc.tochidden,.toc.tochidden,.toctoggle{display:none}}
+.postedit-container{margin:0 auto;position:fixed;top:0;height:0;left:50%;z-index:1000;font-size:13px}.postedit-container:hover{cursor:pointer}.postedit{position:relative;top:0.6em;left:-50%;padding:0.6em 3.6em 0.6em 1.1em;line-height:1.5625em;color:#626465;background-color:#f4f4f4;border:1px solid #dcd9d9;text-shadow:0 0.0625em 0 rgba( 255,255,255,0.5 );border-radius:5px;box-shadow:0 2px 5px 0 #ccc;-webkit-transition:all 0.25s ease-in-out;-moz-transition:all 0.25s ease-in-out;-ms-transition:all 0.25s ease-in-out;-o-transition:all 0.25s ease-in-out;transition:all 0.25s ease-in-out}.skin-monobook .postedit{top:6em !important; }.postedit-faded{opacity:0}.postedit-icon{padding-left:41px;  line-height:25px;background-repeat:no-repeat;background-position:8px 50%}.postedit-icon-checkmark{background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAB9ElEQVR4AZWRA3AYURQArxrVHtW2bdu2bdu2zdi2bdu2bWxs7zeehZaw4f70kbs+zI3e/nWK+RWx3aOFlrL56Sy5SxrruG69hlv6OyK+mz+8KDSXdXembj0ispT7tjs4ZTIbpYBvxGSGKzZTeFrb7W/meN002swFs0U8ttpHTkF2BvCqWQrW35929bTsKm5Zb+SEwWwcY8wAngB9m7Z+d+rIPZ/npdy12M5p47n8dXsCYAf0qPy06eGMdktuDu9Qf+JmKl3SWM91qzVcN9tAbEYkwMaq0tyb1m/To5kP170el/BK8/qa6sJr70ydf+T/Uu5ab+Oo/lS0AkUBpIFWlZ9WPhxpse/PHO7YbOOczjL0vZV2lNxPPtG73dYXM+xvm2znrOl83tidoqCwMBgYXsPFB0on5S6pr+eK5TKuW67lgvaKvF8mL1dtfTL32FHxRdyx3cQpg7m4x9sCXKkTIzA4LDH44zWdzaUf71hv5rTG4uyzcusybxSX7aThbMQ8XgCYAp3rzTTQOiIh9PNlzY3FSuZxrzjme1Y7uGS6kjsWO4jPjM4FVjRZsvD4kO9XtTZzQn82NyzWc0B7AmZh6gA/hOYSGhfw9YbOVnarj+S7800AL2BIsxUAbWNToj7bhBuQmZcOsFdoKUC74rGheCwXmqAIQTc9jQcrADIAAAAASUVORK5CYII=);background-image:url(/Intranet/Wiki/resources/src/mediawiki.action/images/green-checkmark.png?d94f1)!ie;background-position:left}.postedit-close{position:absolute;padding:0 0.8em;right:0;top:0;font-size:1.25em;font-weight:bold;line-height:2.3em;color:#000;text-shadow:0 0.0625em 0 #fff;text-decoration:none;opacity:0.2;filter:alpha( opacity=20 )}.postedit-close:hover{color:#000;text-decoration:none;opacity:0.4;filter:alpha( opacity=40 )}</style><style>
+.suggestions a.mw-searchSuggest-link,.suggestions a.mw-searchSuggest-link:hover,.suggestions a.mw-searchSuggest-link:active,.suggestions a.mw-searchSuggest-link:focus{color:#000;text-decoration:none}.suggestions-result-current a.mw-searchSuggest-link,.suggestions-result-current a.mw-searchSuggest-link:hover,.suggestions-result-current a.mw-searchSuggest-link:active,.suggestions-result-current a.mw-searchSuggest-link:focus{color:#fff}.suggestions a.mw-searchSuggest-link .special-query{ overflow:hidden;-o-text-overflow:ellipsis; text-overflow:ellipsis;white-space:nowrap}</style><meta name="ResourceLoaderDynamicStyles" content="">
+<meta name="generator" content="MediaWiki 1.29.1">
+<meta name="robots" content="noindex,follow">
+<link rel="shortcut icon" href="https://agreg.phys.ens.fr/favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="https://agreg.phys.ens.fr/Intranet/Wiki/opensearch_desc.php" title="Agrégation de Physique (fr)">
+<link rel="EditURI" type="application/rsd+xml" href="https://agreg.phys.ens.fr/Intranet/Wiki/api.php?action=rsd">
+<link rel="alternate" type="application/atom+xml" title="Flux Atom de Agrégation de Physique" href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Sp%C3%A9cial:Modifications_r%C3%A9centes&amp;feed=atom">
+<script src="poly_arduino_fichiers/load.es"></script></head>
+<body class="mediawiki ltr sitedir-ltr mw-hide-empty-elt ns-0 ns-subject page-Microcontroleurs rootpage-Microcontroleurs skin-vector action-view">		<div id="mw-page-base" class="noprint"></div>
+		<div id="mw-head-base" class="noprint"></div>
+		<div id="content" class="mw-body" role="main">
+			<a id="top"></a>
+
+						<div class="mw-indicators mw-body-content">
+</div>
+			<h1 id="firstHeading" class="firstHeading" lang="fr">Microcontroleurs</h1>
+									<div id="bodyContent" class="mw-body-content">
+									<div id="siteSub">De Agrégation de Physique</div>
+								<div id="contentSub"></div>
+												<div id="jump-to-nav" class="mw-jump">
+					Aller à :					<a href="#mw-head">navigation</a>, 					<a href="#p-search">rechercher</a>
+				</div>
+				<div id="mw-content-text" dir="ltr" class="mw-content-ltr" lang="fr"><div id="toc" class="toc"><div id="toctitle" class="toctitle"><h2>Sommaire</h2><span class="toctoggle">&nbsp;[<a role="button" tabindex="0" class="togglelink">masquer</a>]&nbsp;</span></div>
+<ul>
+<li class="toclevel-1 tocsection-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a>
+<ul>
+<li class="toclevel-2 tocsection-2"><a href="#Pr.C3.A9sentation_Arduino"><span class="tocnumber">1.1</span> <span class="toctext">Présentation Arduino</span></a></li>
+<li class="toclevel-2 tocsection-3"><a href="#Pr.C3.A9sentation_breadboard"><span class="tocnumber">1.2</span> <span class="toctext">Présentation breadboard</span></a></li>
+<li class="toclevel-2 tocsection-4"><a href="#Composants"><span class="tocnumber">1.3</span> <span class="toctext">Composants</span></a></li>
+<li class="toclevel-2 tocsection-5"><a href="#Soft"><span class="tocnumber">1.4</span> <span class="toctext">Soft</span></a></li>
+<li class="toclevel-2 tocsection-6"><a href="#Langage"><span class="tocnumber">1.5</span> <span class="toctext">Langage</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-7"><a href="#Utilisation_des_dip.C3.B4les_.22nus.22_:_exemple_de_la_charge_d.27un_condensateur"><span class="tocnumber">2</span> <span class="toctext">Utilisation des dipôles "nus"&nbsp;: exemple de la charge d'un condensateur</span></a></li>
+<li class="toclevel-1 tocsection-8"><a href="#Utilisation_d.27un_pont_diviseur_:_le_cas_d.27une_thermistance"><span class="tocnumber">3</span> <span class="toctext">Utilisation d'un pont diviseur&nbsp;: le cas d'une thermistance</span></a></li>
+<li class="toclevel-1 tocsection-9"><a href="#Les_capteurs_connectique_Groove"><span class="tocnumber">4</span> <span class="toctext">Les capteurs connectique Groove</span></a>
+<ul>
+<li class="toclevel-2 tocsection-10"><a href="#V.C3.A9rification_de_la_relation_pression.2Fvolume"><span class="tocnumber">4.1</span> <span class="toctext">Vérification de la relation pression/volume</span></a></li>
+<li class="toclevel-2 tocsection-11"><a href="#Un_d.C3.A9tecteur_de_distance_.C3.A0_ultrasons"><span class="tocnumber">4.2</span> <span class="toctext">Un détecteur de distance à ultrasons</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1 tocsection-12"><a href="#Aller_plus_loin_.3F_L.27Arduino_autonome"><span class="tocnumber">5</span> <span class="toctext">Aller plus loin&nbsp;? L'Arduino autonome</span></a></li>
+<li class="toclevel-1 tocsection-13"><a href="#Limites"><span class="tocnumber">6</span> <span class="toctext">Limites</span></a></li>
+</ul>
+</div>
+
+<h2><span class="mw-headline" id="Introduction">Introduction</span></h2>
+<h3><span class="mw-headline" id="Pr.C3.A9sentation_Arduino">Présentation Arduino</span></h3>
+<p>Un Arduino est en fait l'assemblage de deux éléments&nbsp;: un 
+microcontroleur et une plaque sur laquelle il est connecté et permet 
+d'utiliser facilement ses entrées/sorties. Le plan de conception de la 
+plaque est opensource, et c'est un des aspects qui a lancé l'angouement 
+pour l'Arduino il y a quelques années.
+</p>
+<div class="center"><div class="floatnone"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Fichier:Arduino.jpg" class="image" title="Arduino Uno"><img alt="Arduino Uno" src="poly_arduino_fichiers/700px-Arduino.jpg" srcset="poly_arduino_fichiers/Arduino.jpg 1.5x" width="700" height="418"></a></div></div>
+<p>On peut décrire rapidement les éléments importants de la photo de l'Arduino Uno:
+</p>
+<ul><li> Dans les expériences à l'agrégation, on communiquera et on 
+alimentera l'Arduino avec le port USB en le connectant à un ordinateur.</li>
+<li>  Le microcontroleur a 6 entrées analogiques. C'est en général sur ces fiches qu'on branche les capteurs externes.</li>
+<li> Il a également de nombreuses entrées/sorties numériques, donc qui permettent de recevoir ou d'envoyer des 0/1.</li>
+<li> Pour les circuits électriques, on utilise en général la fiche 5V d'alimentation, et une fiche GND (masse).</li>
+<li> On peut remettre à zéro l'Arduino en appuyant sur le bouton Reset.</li></ul>
+<h3><span class="mw-headline" id="Pr.C3.A9sentation_breadboard">Présentation breadboard</span></h3>
+<p>Afin de câbler les dipôles et les capteurs au microcontrôleur, on 
+utilise une plaque appelée breadboard (cf. photo). Sur le breadboard, 
+certaines fiches sont reliées les unes aux autres&nbsp;: toutes les 
+fiches d'une ligne sont électriquement liées. Les fiches sur les 
+colonnes externes de la plaque sont également reliées, on les utilise 
+pour l'alimentation si besoin.
+</p>
+<div class="center"><div class="floatnone"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Fichier:Breadboard.svg" class="image" title="Photographies d'un breadboard (a) face avant (b) face arrière."><img alt="Photographies d'un breadboard (a) face avant (b) face arrière." src="poly_arduino_fichiers/700px-Breadboard.png" srcset="poly_arduino_fichiers/1050px-Breadboard.png 1.5x, poly_arduino_fichiers/1400px-Breadboard.png 2x" width="700" height="287"></a></div></div>
+<h3><span class="mw-headline" id="Composants">Composants</span></h3>
+<p>On utilise différents types de composants avec l'Arduino&nbsp;:
+</p>
+<ul><li> des dipôles "nus" simples comme des résistances, des 
+condensateurs. Au passage, les résistances étant nues, il faut utiliser 
+le code couleur pour déterminer la valeur de R&nbsp;;</li>
+<li> d'autres dipôles (diodes, etc.), des tripôles (transistor, etc.) ou
+ des quadripôles (boutons poussoirs, etc.) qu'on utilise également sur 
+le breadboard&nbsp;;</li>
+<li> des éléments utilisés comme des capteurs, par exemple des 
+photorésistances ou thermistances dont la résistance varie lorsque 
+l'éclairement ou la température change. L'Arduino ne mesure que des 
+tensions, il faut donc souvent un circuit électrique pour convertir la 
+grandeur de mesure (ici la résistance) en tension. On utilise très 
+régulièrement des ponts diviseurs de tension.</li>
+<li> enfin des capteurs fournis avec l'électronique qui permet de lire 
+directement une tension. Ces capteurs utilisent une connectique 
+différente, peut-être plus pratique que les fils simples&nbsp;: la 
+connectique "Groove". Il suffit de relier le capteur au shield de la 
+carte Arduino avec un seul cable, et celui-ci transmet l'alimentation et
+ les entrées/sorties du capteur directement. C'est très pratique. Les 
+entrées "A..." sont des entrées analogiques, et les "D..." des 
+entrées/sorties numériques.</li></ul>
+<p><b>Les capteurs Groove&nbsp;:</b>
+</p>
+<ul><li> sont issus du <a rel="nofollow" class="external text" href="https://www.gotronic.fr/art-arduino-sensor-kit-base-32726.htm">Sensor Kit</a>. Toutes les fiches pratiques sont sur ce site.</li>
+<li> <a rel="nofollow" class="external text" href="https://www.gotronic.fr/art-capteur-a-effet-hall-grove-101020046-18985.htm">Sonde à effet Hall</a></li>
+<li> <a rel="nofollow" class="external text" href="https://www.gotronic.fr/art-telemetre-a-ultrasons-grove-101020010-18976.htm">Télémètre à ultrasons</a></li>
+<li> <a rel="nofollow" class="external text" href="https://www.adafruit.com/product/4686#technical-details">Capteur de température</a></li>
+<li> <a rel="nofollow" class="external text" href="https://www.gotronic.fr/art-capteur-mpx5700ap-grove-110020248-30374.htm">Pressiomètre</a></li></ul>
+<p><br>
+</p>
+<div class="center"><div class="floatnone"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Fichier:CodeResistances.jpg" class="image" title="Code couleur des valeurs de résistances."><img alt="Code couleur des valeurs de résistances." src="poly_arduino_fichiers/CodeResistances.jpg" width="700" height="606"></a></div></div>
+<div class="center"><div class="floatnone"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Fichier:ComposantsArduino.svg" class="image" title="(a) des composants nus typiques d'Arduino. (b) des capteurs Groove avec le shield et les câbles adaptés."><img alt="(a) des composants nus typiques d'Arduino. (b) des capteurs Groove avec le shield et les câbles adaptés." src="poly_arduino_fichiers/700px-ComposantsArduino.png" srcset="poly_arduino_fichiers/1050px-ComposantsArduino.png 1.5x, poly_arduino_fichiers/1400px-ComposantsArduino.png 2x" width="700" height="304"></a></div></div>
+<h3><span class="mw-headline" id="Soft">Soft</span></h3>
+<p>Afin de programmer les microcontroleurs type Arduino, on utilise le 
+logiciel IDE Arduino qui permet d'écrire le code dans le langage 
+d'Arduino (dérivé de C), de le téléverser sur le microcontroleur, et de 
+récupérer les informations récupérées via le port Série.
+</p><p>Pour bien prendre en main l'interface, l'onglet "Outils" est important&nbsp;:
+</p>
+<ul><li> <b>Port&nbsp;:</b> permet de spécifier (ou connaître) le nom du port série où est connecté le microcontroleur&nbsp;;</li>
+<li> <b>Type de carte&nbsp;:</b> Permet de préciser le type de carte utilisé (ici uniquement des Arduino Uno)</li>
+<li> <b>Moniteur série&nbsp;:</b> Permet d'afficher le rendu du port série. C'est grace à ce moniteur qu'on obtient le retour de l'Arduino.</li>
+<li> <b>Traceur série&nbsp;:</b> Idem que le moniteur série sous la forme d'un graphique.</li></ul>
+<p>Lorsqu'on écrit un code, on peut tester sa compillation en cliquant sur l'icône <i>Vérifier</i>. Puis, lorsqu'on est prêt à le transférer au microcontroleur, on peut cliquer sur <i>Téléverser</i>.
+</p>
+<h3><span class="mw-headline" id="Langage">Langage</span></h3>
+<p>L'objectif n'est pas ici de faire un cours détaillé sur le langage 
+Arduino. On va très pragmatiquement expliquer le fonctionnement d'un 
+code.
+</p><p>Un code Arduino est composé de trois parties essentielles&nbsp;: 
+</p>
+<ul><li> la définition des variables globales qui peuvent être de différents types (dont int, float et d'éventuelles variations <i>long</i>, <i>unsigned long</i>, etc.)</li>
+<li> l'initialisation dont le texte est contenu dans la fonction <b>setup()</b>. On y place les définitions des fiches (les <i>pin</i>)
+ utilisées sur la plaque, la vitesse de communication avec le port 
+série. Ensuite on peut y trouver des définitions comme ci-dessous.</li></ul>
+<pre>void setup() {
+pinMode(8, OUTPUT); // alimentation du circuit
+Serial.begin(9600); 
+digitalWrite(8,HIGH);
+Serial.println("Debut des mesures");
+startTime = millis();
+}
+</pre>
+<ul><li> une fonction <b>loop()</b> qui contient tout le reste du 
+programme, et qui comme son nom l'indique va se relancer à l'infini tant
+ que l'Arduino est connecté. Cette boucle va contenir toutes les 
+instructions ("lit la valeur du capteur", "change le statut de telle 
+pin", "attends x millisecondes", etc.)</li></ul>
+<p>On utilise très souvent des tests avec <b>if else</b>.
+</p><p>Quelques fonctions très utiles&nbsp;:
+</p>
+<ul><li> <i>Serial.printLn(x)</i>&nbsp;: permet d'afficher la valeur de x dans le moniteur série.</li>
+<li> <i>digitalWrite(pin1, HIGH)</i>&nbsp;: permet de changer le statut de pin1. Les deux modes possibles sont HIGH (1) et LOW (0)</li>
+<li> <i>analogRead(pin2)</i>&nbsp;: permet de lire la valeur de pin2, une fiche a priori analogique.</li></ul>
+<h2><span class="mw-headline" id="Utilisation_des_dip.C3.B4les_.22nus.22_:_exemple_de_la_charge_d.27un_condensateur">Utilisation des dipôles "nus"&nbsp;: exemple de la charge d'un condensateur</span></h2>
+<p>L'intérêt des microcontroleurs type Arduino réside dans le fait de 
+pouvoir être utilisé avec des dipôles "nus", et établir des connexions 
+directement sur le breadboard.
+</p><p>On propose une expérience très simple permettant de mesurer la capacité d'un condensateur à l'aide d'un circuit RC.
+</p><p><b>Protocole&nbsp;:</b>
+</p>
+<ul><li>Brancher sur le breadboard une résistance et une capacité en série de telle sorte que <img class="mwe-math-fallback-image-inline tex" alt="\tau" src="poly_arduino_fichiers/81a69207104f00baaabd6f84cafd15a0.png"> soit de l'ordre de 0,1s.</li>
+<li>Brancher l'entrée du circuit à la PIN 8 de l'Arduino, la sortie à 
+une broche de masse (Ground) et envoyer la tension aux bornes du 
+condensateur à l'entrée "Analog In" A0.</li></ul>
+<p><b>Programme&nbsp;:</b>
+Le programme condensateur_Montrouge réalise les étapes suivantes&nbsp;:
+</p>
+<ul><li> Initialisation&nbsp;: on définit la pin 8 une pin active de 
+sortie, on connecte le microcontroleur au port série, puis on éteint la 
+pin 8 si jamais elle était allumée. On attend 1000ms. Puis on impose une
+ tension sur le système via la pin 8.</li>
+<li> Boucle&nbsp;: on a défini un pas de quantification (la variable "intervale"). Après ce <img class="mwe-math-fallback-image-inline tex" alt="\Delta t" src="poly_arduino_fichiers/5a72f1304af0783657605aed0e38201a.png">,
+ on regarde si le condensateur est en charge (état 1), décharge (état 
+2), ou si l'expérience est finie (état 3). Pendant la charge, on affiche
+ la tension sur le moniteur série, jusqu'à ce que la tension atteigne 
+63% de la tension maximale (à savoir 1023). On mesure le temps écoulé, 
+on obtient directement <img class="mwe-math-fallback-image-inline tex" alt="\tau" src="poly_arduino_fichiers/81a69207104f00baaabd6f84cafd15a0.png">.
+ Puis on décharge le condensateur en basculant dans l'état 2. Et on 
+recommence l'expérience en basculant dans l'état 1 sauf si on a fait 
+suffisamment de fois l'expérience.</li></ul>
+<p><b>Valeurs&nbsp;:</b> On peut utiliser un condensateur de 100nF avec 
+une résistance de 1MOhm par exemple, on obtient un temps caractéristique
+ de 0,1s. La répétition de l'expérience montre que la valeur obtenue 
+pour le temps de montée est stable. Choisir des composants tels que <img class="mwe-math-fallback-image-inline tex" alt="\tau" src="poly_arduino_fichiers/81a69207104f00baaabd6f84cafd15a0.png">
+ est plus petit peut mettre en avant l'intérêt de répéter l'expérience, 
+et de faire une moyenne des valeurs obtenues (incertitudes statistiques 
+de type A).
+</p><p><br>
+</p>
+<h2><span class="mw-headline" id="Utilisation_d.27un_pont_diviseur_:_le_cas_d.27une_thermistance">Utilisation d'un pont diviseur&nbsp;: le cas d'une thermistance</span></h2>
+<p>Il est fréquent que le transducteur utilisé convertisse la grandeur 
+d'intérêt en autre chose qu'une tension, par exemple une variation de sa
+ résistance (thermistance, Pt100, photo-résistance, etc.) Dans ce cas 
+assez courant, on cherche à "transformer" une résistance en tension, et 
+on utilise un pont diviseur de tension. L'idée est de mettre en série 
+une résistance R connue et le dipôle dont la résistance <img class="mwe-math-fallback-image-inline tex" alt="R_\mathrm{dip}" src="poly_arduino_fichiers/3028a4fecec674cac8451df9a89f97d8.png"> varie autour de la valeur de R. En appliquant une tension <img class="mwe-math-fallback-image-inline tex" alt="U_\textrm{in}" src="poly_arduino_fichiers/047d5a770b87411ac256c92c5a0655ee.png"> à l'ensemble (5V par exemple), on mesure la tension aux bornes du dipôle qui vaut
+</p>
+<center><img class="mwe-math-fallback-image-inline tex" alt="U = \frac{R_\mathrm{dip}}{R+R_\mathrm{dip}} U_\mathrm{in}" src="poly_arduino_fichiers/4da47bdeca6c949c2cacd70a31e33f4a.png"></center>
+<p>On obtient ainsi la valeur de la résistance 
+</p>
+<center><img class="mwe-math-fallback-image-inline tex" alt=" R_\mathrm{dip} = \frac{U}{U_\mathrm{in}-U} R" src="poly_arduino_fichiers/8db1076e3c6bc3ee57c0c472aaf1b83c.png"></center>
+<p>Après il faut connaître le lien entre la variation de la résistance 
+et la grandeur mesurée. Pour les thermistances fournies avec le setup 
+Arduino, on pourra aller voir la <a rel="nofollow" class="external text" href="https://www.gotronic.fr/pj-691.pdf">fiche technique</a> (pénible). Sinon on peut utiliser des thermistances de la collection.
+</p>
+<h2><span class="mw-headline" id="Les_capteurs_connectique_Groove">Les capteurs connectique Groove</span></h2>
+<p>Avec la connectique Groove, on peut faire facilement du "plug and 
+play": on branche délicatement le shield sur l'Arduino, on connecte les 
+capteurs, on copie colle les programmes adaptés pour chaque capteur dans
+ l'IDE Arduino et le moniteur série donne accès aux valeurs du capteur.
+</p>
+<h3><span class="mw-headline" id="V.C3.A9rification_de_la_relation_pression.2Fvolume">Vérification de la relation pression/volume</span></h3>
+<p>Prenons l'exemple d'une manipulation au programme de lycée&nbsp;: la loi de Boyle-Mariotte. On utilise le pressiomètre (<a rel="nofollow" class="external text" href="https://www.gotronic.fr/art-capteur-mpx5700ap-grove-110020248-30374.htm">description et specs sur le site Gotronic</a>). 
+</p><p>Après avoir placé délicatement le shield sur la carte Ardunio, 
+connecter le capteur au shield. Téléverser le programme sur le 
+microcontroleur, il permet d'afficher la valeur de la pression dans le 
+moniteur série. Le capteur nécessite une phase d'étallonage, au minimum 
+en prenant la pression atmosphérique. Consulter la fiche technique.
+</p><p><b>Loi de Boyle-Mariotte</b>
+</p><p>Afin de vérifier que pour un système fermé à température 
+constante, pV = cste, on connecte simplement le capteur à une seringue 
+dont le piston est placé <b>à mi-course</b>. Cela permettra d'augmenter 
+ou diminuer la pression tout en restant dans une gamme raisonnable de 
+pressions pour le capteur (0,5 à 2 bar). Mesurer la pression pour 
+différentes positions du piston. Lors de l'ajustement de la courbe 
+P=f(V), attention à considérer l'intégralité du volume du gaz (en 
+particulier celui dans le tube&nbsp;!)
+</p><p><br>
+</p>
+<h3><span class="mw-headline" id="Un_d.C3.A9tecteur_de_distance_.C3.A0_ultrasons">Un détecteur de distance à ultrasons</span></h3>
+<p>Un autre exemple d'utilisation des capteurs avec la connectique Groove&nbsp;: le <a rel="nofollow" class="external text" href="https://www.gotronic.fr/art-telemetre-a-ultrasons-grove-101020010-18976.htm">capteur de distance</a>.
+ Celui-ci utilise un émétteur et un récepteur ultrasons pour mesurer sa 
+distance à un objet. On peut montrer le concept de la mesure, estimer 
+des incertitudes et limitations de la mesure, etc.
+</p>
+<h2><span class="mw-headline" id="Aller_plus_loin_.3F_L.27Arduino_autonome">Aller plus loin&nbsp;? L'Arduino autonome</span></h2>
+<p>Un intérêt important aux microcontroleurs est qu'ils peuvent être utilisés en autonomie&nbsp;:
+</p>
+<ul><li> soit en tant que capteur autonome, dont on récupérera les données ultérieurement&nbsp;;</li>
+<li> soit en tant que "mini-ordinateur", le microcontroleur peut agir 
+sur des actionneurs en fonction des retours donnés par ses capteurs, et 
+ainsi faire des rétroactions automatiques. Par exemple en gardant la 
+tenmpérature d'une enceinte, une intensité lumineuse ou une vitesse de 
+rotation constante, ou en réagissant lorsque qu'une grandeur dépasse une
+ valeurs seuil pré-déterminée.</li></ul>
+<p>Un exemple d'utilisation autonome&nbsp;: alimenter l'Arduino avec des
+ piles, connecter le capteur de pression atmosphérique et un écran à 
+cristaux liquides. En plaçant l'ensemble dans la cloche à vide, on peut 
+mesurer la pression en fonction du temps, voire l'enregistrer.
+</p><p><i>Rq&nbsp;: il n'y a pas (pour l'instant) de programme correspondant à cette expérience. N'hésitez pas à l'écrire.</i>
+</p>
+<h2><span class="mw-headline" id="Limites">Limites</span></h2>
+<p>Les limites d'un microcontrôleur sont les mêmes que les limites d'un 
+AO par exemple. On va avoir des limites en courant, en fréquence. On va 
+également avoir une numérisation bien visible (les Uno sont en 10 bits, 
+donc avec seulement 1024 valeurs différentes). On peut mettre en 
+évidence cette numérisation ou la limite d'échantillonage en montage.
+</p><p>Notez que les limites ne sont pas des limites "fondamentales", 
+mais simplement des limites matérielles dues à l'utilisation de tel ou 
+tel microcontroleur (celui d'Arduino Uno est particulièrement médiocre, 
+ce qui permet de mettre facilement en évidence ses limitations&nbsp;!)
+</p>
+<!-- 
+NewPP limit report
+Cached time: 20220507205325
+Cache expiry: 86400
+Dynamic content: false
+CPU time usage: 0.040 seconds
+Real time usage: 0.053 seconds
+Preprocessor visited node count: 127/1000000
+Preprocessor generated node count: 224/1000000
+Post‐expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Highest expansion depth: 2/40
+Expensive parser function count: 0/100
+-->
+<!--
+Transclusion expansion time report (%,ms,calls,template)
+100.00%    0.000      1 -total
+-->
+
+<!-- Saved in parser cache with key wikidb:pcache:idhash:3436-0!*!*!!fr!5!*!math=0 and timestamp 20220507205325 and revision id 17499
+ -->
+</div>					<div class="printfooter">
+						Récupérée de «&nbsp;<a dir="ltr" href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Microcontroleurs&amp;oldid=17499">https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Microcontroleurs&amp;oldid=17499</a>&nbsp;»					</div>
+				<div id="catlinks" class="catlinks catlinks-allhidden" data-mw="interface"></div>				<div class="visualClear"></div>
+							</div>
+		</div>
+		<div id="mw-navigation">
+			<h2>Menu de navigation</h2>
+
+			<div id="mw-head">
+									<div id="p-personal" role="navigation" class="" aria-labelledby="p-personal-label">
+						<h3 id="p-personal-label">Outils personnels</h3>
+						<ul>
+							<li id="pt-login"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Sp%C3%A9cial:Connexion&amp;returnto=Microcontroleurs&amp;returntoquery=printable%3Dyes" title="Il est recommandé de vous identifier ; ce n'est cependant pas obligatoire. [Alt+Maj+o]" accesskey="o">Se connecter</a></li>						</ul>
+					</div>
+									<div id="left-navigation">
+										<div id="p-namespaces" role="navigation" class="vectorTabs" aria-labelledby="p-namespaces-label">
+						<h3 id="p-namespaces-label">Espaces de noms</h3>
+						<ul>
+															<li id="ca-nstab-main" class="selected"><span><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Microcontroleurs" title="Voir la page de contenu [Alt+Maj+c]" accesskey="c">Page</a></span></li>
+															<li id="ca-NS_BIBLIOGRAPHIE" class="new"><span><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Bibliographie:Microcontroleurs&amp;action=edit&amp;redlink=1">Bibliographie</a></span></li>
+															<li id="ca-NS_PAGE_DU_PROF" class="new"><span><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Prof:Microcontroleurs&amp;action=edit&amp;redlink=1">Prof</a></span></li>
+															<li id="ca-NS_RESULTAT" class="new"><span><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Materiel:Microcontroleurs&amp;action=edit&amp;redlink=1">Materiel</a></span></li>
+													</ul>
+					</div>
+										<div id="p-variants" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-variants-label">
+												<h3 id="p-variants-label" tabindex="0">
+							<span>Variantes</span><a href="#" tabindex="-1"></a>
+						</h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+									</div>
+				<div id="right-navigation">
+										<div id="p-views" role="navigation" class="vectorTabs" aria-labelledby="p-views-label">
+						<h3 id="p-views-label">Affichages</h3>
+						<ul>
+															<li id="ca-view" class="selected"><span><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Microcontroleurs">Lire</a></span></li>
+															<li id="ca-viewsource"><span><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Microcontroleurs&amp;action=edit" title="Cette page est protégée.
+Vous pouvez toutefois en visualiser la source. [Alt+Maj+e]" accesskey="e">Voir le texte source</a></span></li>
+															<li id="ca-history" class="collapsible"><span><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Microcontroleurs&amp;action=history" title="Les versions passées de cette page (avec leurs contributeurs) [Alt+Maj+h]" accesskey="h">Historique</a></span></li>
+													</ul>
+					</div>
+										<div id="p-cactions" role="navigation" class="vectorMenu emptyPortlet" aria-labelledby="p-cactions-label">
+						<h3 id="p-cactions-label" tabindex="0"><span>Plus</span><a href="#" tabindex="-1"></a></h3>
+
+						<div class="menu">
+							<ul>
+															</ul>
+						</div>
+					</div>
+										<div id="p-search" role="search">
+						<h3>
+							<label for="searchInput">Rechercher</label>
+						</h3>
+
+						<form action="/Intranet/Wiki/index.php" id="searchform">
+							<div id="simpleSearch">
+							<input type="search" name="search" placeholder="Rechercher sur Agrégation de Physique" title="Rechercher dans Agrégation de Physique [Alt+Maj+f]" accesskey="f" id="searchInput" tabindex="1" autocomplete="off"><input type="hidden" value="Spécial:Recherche" name="title"><input type="submit" name="go" value="Lire" title="Aller vers une page portant exactement ce nom si elle existe." id="searchButton" class="searchButton">							</div>
+						</form>
+					</div>
+									</div>
+			</div>
+			<div id="mw-panel">
+				<div id="p-logo" role="banner"><a class="mw-wiki-logo" href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Accueil" title="Page principale"></a></div>
+						<div class="portal" role="navigation" id="p-navigation" aria-labelledby="p-navigation-label">
+			<h3 id="p-navigation-label">Navigation</h3>
+
+			<div class="body">
+									<ul>
+						<li id="n-mainpage-description"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Accueil" title="Aller à l'accueil [Alt+Maj+z]" accesskey="z">Accueil</a></li><li id="n-recentchanges"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Sp%C3%A9cial:Modifications_r%C3%A9centes" title="Liste des modifications récentes sur le wiki [Alt+Maj+r]" accesskey="r">Modifications récentes</a></li><li id="n-randompage"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Sp%C3%A9cial:Page_au_hasard" title="Afficher une page au hasard [Alt+Maj+x]" accesskey="x">Page au hasard</a></li><li id="n-help"><a href="https://www.mediawiki.org/wiki/Special:MyLanguage/Help:Contents" title="Aide">Aide</a></li>					</ul>
+							</div>
+		</div>
+			<div class="portal" role="navigation" id="p-tb" aria-labelledby="p-tb-label">
+			<h3 id="p-tb-label">Outils</h3>
+
+			<div class="body">
+									<ul>
+						<li id="t-whatlinkshere"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Sp%C3%A9cial:Pages_li%C3%A9es/Microcontroleurs" title="Liste des pages liées qui pointent sur celle-ci [Alt+Maj+j]" accesskey="j">Pages liées</a></li><li id="t-recentchangeslinked"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Sp%C3%A9cial:Suivi_des_liens/Microcontroleurs" rel="nofollow" title="Liste des modifications récentes des pages appelées par celle-ci [Alt+Maj+k]" accesskey="k">Suivi des pages liées</a></li><li id="t-specialpages"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Sp%C3%A9cial:Pages_sp%C3%A9ciales" title="Liste de toutes les pages spéciales [Alt+Maj+q]" accesskey="q">Pages spéciales</a></li><li id="t-permalink"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Microcontroleurs&amp;oldid=17499" title="Adresse permanente de cette version de la page">Adresse permanente</a></li><li id="t-info"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Microcontroleurs&amp;action=info" title="Plus d’information sur cette page">Information sur la page</a></li><li id="t-cite"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php?title=Sp%C3%A9cial:Citer&amp;page=Microcontroleurs&amp;id=17499" title="Informations sur la manière de citer cette page">Citer cette page</a></li>					</ul>
+							</div>
+		</div>
+				</div>
+		</div>
+		<div id="footer" role="contentinfo">
+							<ul id="footer-info">
+											<li id="footer-info-lastmod"> Cette page a été modifiée pour la dernière fois le 20 avril 2022 à 15:51.</li>
+									</ul>
+							<ul id="footer-places">
+											<li id="footer-places-privacy"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Agr%C3%A9gation_de_Physique:Confidentialit%C3%A9" class="mw-redirect" title="Agrégation de Physique:Confidentialité">Politique de confidentialité</a></li>
+											<li id="footer-places-about"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Agr%C3%A9gation_de_Physique:%C3%80_propos" title="Agrégation de Physique:À propos">À propos de Agrégation de Physique</a></li>
+											<li id="footer-places-disclaimer"><a href="https://agreg.phys.ens.fr/Intranet/Wiki/index.php/Agr%C3%A9gation_de_Physique:Avertissements_g%C3%A9n%C3%A9raux" title="Agrégation de Physique:Avertissements généraux">Avertissements</a></li>
+									</ul>
+										<ul id="footer-icons" class="noprint">
+											<li id="footer-poweredbyico">
+							<a href="https://www.mediawiki.org/"><img src="poly_arduino_fichiers/poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki" srcset="poly_arduino_fichiers/poweredby_mediawiki_132x47.png 1.5x, poly_arduino_fichiers/poweredby_mediawiki_176x62.png 2x" width="88" height="31"></a>						</li>
+									</ul>
+						<div style="clear:both"></div>
+		</div>
+		<script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgPageParseReport":{"limitreport":{"cputime":"0.040","walltime":"0.053","ppvisitednodes":{"value":127,"limit":1000000},"ppgeneratednodes":{"value":224,"limit":1000000},"postexpandincludesize":{"value":0,"limit":2097152},"templateargumentsize":{"value":0,"limit":2097152},"expansiondepth":{"value":2,"limit":40},"expensivefunctioncount":{"value":0,"limit":100},"timingprofile":["100.00%    0.000      1 -total"]},"cachereport":{"timestamp":"20220507205325","ttl":86400,"transientcontent":false}}});});</script><script>(window.RLQ=window.RLQ||[]).push(function(){mw.config.set({"wgBackendResponseTime":252});});</script>
+	
+
+<div style="display: none; font-size: 11.3333px;" class="suggestions"><div class="suggestions-results"></div><div class="suggestions-special"></div></div></body></html>
