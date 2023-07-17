@@ -10,12 +10,12 @@
  *                         |
  *                     (pin GND)
  *                     
- *  La pin 8 fournit la tension d'alimentation (0 ou 5 V).
- *  La pin A0 sert à la mesure de la tension.
+ * La pin 8 fournit la tension d'alimentation (0 ou 5 V).
+ * La pin A0 sert à la mesure de la tension.
  *  
- *  Le programme effectue plusieurs cycles de charges, où le condensateur est chargé jusqu'à ce que la tension à ses bornes atteigne une valeur seuil, puis déchargé.
+ * Le programme effectue plusieurs cycles de charges, où le condensateur est chargé jusqu'à ce que la tension à ses bornes atteigne une valeur seuil, puis déchargé.
  *  
- *  Attention, ce programme fonctionne à 115200 baud, à régler sur l'affichage moniteur (Crtl+Shift+M).
+ * Attention, ce programme fonctionne à 115200 baud, à régler sur l'affichage moniteur ou plotteur.
  */
 
 float const pauseEntreLesMesures = 0.01; // Nombre de millisecondes entre chaque mesure de la tension.

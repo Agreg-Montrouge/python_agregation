@@ -3,7 +3,7 @@
  * 
  * Une source de tension alternative doit etre branchée entre la pin GND (à la masse) et la pin A0 (où la mesure est faite).
  * 
- * Attention, il faut envoyer à l'arduino une tension PSOITIVE en 0 et 5 V, sinon on risque de l'abimer./
+ * Attention, il faut envoyer à l'arduino une tension POSITIVE en 0 et 5 V, sinon on risque de l'abimer./
  * 
  * Pour enregistrer les mesures : 
  * 
@@ -13,7 +13,7 @@
  *  - Appuyer sur le bouton RESET sur l'arduino pour relancer le programme
  *  - Sélectionner toutes les données (Crtl+A), les copier et les coller dans un fichier texte.
  *  
- * Attention, ce programme fonctionne à 115200 baud, à régler sur l'affichage moniteur (Crtl+Shift+M).
+ * Attention, ce programme fonctionne à 115200 baud, à régler sur l'affichage moniteur ou plotteur.
  */
 
 const int pinRead = A0;

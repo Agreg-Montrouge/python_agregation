@@ -1,7 +1,7 @@
 /*
  * Ce programme permet de mesurer la distance du telemetre a la surface reflechissante la plus proche de lui
  * 
- * Le telemetre doit etre braqnche sur la sortie D4 du shield Grove.
+ * Le telemetre doit etre branche sur la sortie D4 du shield Grove.
  * 
  * La communication se fait a l'aide d'une pin, celle de signal (pinSig).
  * 
@@ -24,7 +24,7 @@
  * 
  * Le pulse consiste en 8 oscillations a 40 kHz.
  *  
- *  Attention, ce programme fonctionne à 115200 baud, à régler sur l'affichage moniteur (Crtl+Shift+M).
+ * Attention, ce programme fonctionne à 115200 baud, à régler sur l'affichage moniteur (Crtl+Shift+M).
  */
 
 float const pauseEntreLesMesures = 1000; // Nombre de millisecondes entre chaque mesure de la distance.

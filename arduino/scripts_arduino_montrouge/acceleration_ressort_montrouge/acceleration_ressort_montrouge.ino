@@ -98,7 +98,7 @@ void loop() {
     
     //Choper les données 
     acc_x = LIS.getAccelerationX() * 100;
-    acc_y = (LIS.getAccelerationY()-1) * 100; // Compensation de la gravité ( offset de 1)
+    acc_y = LIS.getAccelerationY() * 100;
     acc_z = LIS.getAccelerationZ() * 100;
     
     // Afficher les données

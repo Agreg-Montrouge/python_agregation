@@ -13,7 +13,7 @@
  *  - Appuyer sur le bouton RESET sur l'arduino pour relancer le programme
  *  - Sélectionner toutes les données (Crtl+A), les copier et les coller dans un fichier texte.
  *  
- * Attention, ce programme fonctionne à 614400 baud, à régler sur l'affichage moniteur (Crtl+Shift+M).
+ * Attention, ce programme fonctionne à 614400 baud, à régler sur l'affichage moniteur ou plotteur.
  */
 
 const int pinRead = A0;
