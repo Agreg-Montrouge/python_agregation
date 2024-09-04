@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
 r"""Loi de Planck
 
 Description
@@ -21,7 +24,7 @@ Informations
 ------------
 Auteurs : François Lévrier, Emmanuel Baudin, Arnaud Raoux, Pierre Cladé et la prépa agreg de Montrouge
 Année de création : 2016 
-Version : 1.3
+Version : 1.3.1
 Version de Python : 3.6
 Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
@@ -30,6 +33,8 @@ Liste des modifications:
     * v 1.1 : 2016-05-02 Mise à jour de la mise en page - baudin@lpa.ens.fr
     * v 1.2 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
     * v 1.3 : 2019-05-10 Simplification du programme
+    * v 1.31: 2024-09-04 Réglé souci d'encodage (utf-8) et she-bang (LLG)
+
 """
 import matplotlib.pyplot as plt
 import numpy as np

@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
 """Écoulement de Couette plan
 
 Description
@@ -58,4 +61,4 @@ ax.set_xlabel('Position X (m)')
 ax.set_ylabel('Position Z (m)')
 
 if __name__=="__main__":
-    plt.show(fig) # On provoque l'affichage a l'ecran
+    plt.show() # On provoque l'affichage a l'ecran

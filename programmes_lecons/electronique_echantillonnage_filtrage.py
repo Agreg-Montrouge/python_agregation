@@ -1,8 +1,11 @@
-"""Échantillionage
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
+"""Échantillonnage
 
 Description
 -----------
-Ce programme a pour objectif de mettre en évidence l'effet d'échantionnage, ainsi que l'effet de filtrage sur un signal analogique.
+Ce programme a pour objectif de mettre en évidence l'effet d'échantillonnage, ainsi que l'effet de filtrage sur un signal analogique.
 
 Informations
 ------------
@@ -26,10 +29,10 @@ from programmes_lecons import make_param_widgets, make_choose_plot, make_reset_b
 from programmes_lecons import justify
 
 
-titre = """Échantillionage"""
+titre = """Échantillonnage"""
 
 description = """Ce programme a pour objectif de mettre en évidence l'effet 
-d'échantionnage, ainsi que l'effet de filtrage sur un signal analogique."""
+d'échantillonnage, ainsi que l'effet de filtrage sur un signal analogique."""
 
 
 #===========================================================
@@ -40,7 +43,7 @@ frequence_signal = 10
 duree_acquisition = 1 
 
 parameters = {
-    'freq_ech': FloatSlider(value=31, description="Échantillionage -- $f_\mathrm{ech}$ (Ech/s)", max=60.0, min=5),
+    'freq_ech': FloatSlider(value=31, description="Échantillonnage -- $f_\mathrm{ech}$ (Ech/s)", max=60.0, min=5),
 }
 
 

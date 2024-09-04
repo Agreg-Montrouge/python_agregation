@@ -1,9 +1,15 @@
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
 """Diffusion de particules
 
 Description
 -----------
 
-Ce programme représente l'évolution de la distribution spatiale de densité de particules lors d'une diffusion 1D. Il est possible de faire varier le temps, le nombre de particules initialement considérées (le problème est conservatif), le coeffcient de diffusion. 
+Ce programme représente l'évolution de la distribution spatiale de
+densité de particules lors d'une diffusion 1D. Il est possible de
+faire varier le temps, le nombre de particules initialement
+considérées (le problème est conservatif), le coeffcient de diffusion.
 
 Formules
 --------
@@ -12,7 +18,7 @@ Informations
 ------------
 Auteurs : Emmanuel Baudin, Arnaud Raoux, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
 Année de création : 2016 
-Version : 1.2
+Version : 1.21
 Version de Python : 3.7
 Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 International
 
@@ -20,6 +26,7 @@ Liste des modifications :
     * v 1.00 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
     * v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
     * v 1.2  : 2019-05-10
+    * v 1.21 : 2024-09-04 Réglé souci d'encodage (utf-8) et she-bang (LLG)
 """
 
 import numpy as np

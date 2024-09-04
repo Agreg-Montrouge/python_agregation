@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
 r"""Interférence de deux ondes harmoniques
 
 Description

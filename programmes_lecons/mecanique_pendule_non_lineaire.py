@@ -1,9 +1,6 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[137]:
-
-
 r"""Correction non-linéaires au pendule simple
 
 Description
