@@ -1,3 +1,4 @@
+# -*- Encoding: utf-8 -*-
 r"""Figure de diffraction par N fentes
 
 Description
@@ -5,7 +6,7 @@ Description
 Ce programme représente la figure d'interférence obtenue lorsqu'une onde 
 plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif 
 de $N$ fentes régulièrement espacées d'une distance $a$ (centre-centre) et de 
-largeur $b$ chacunes. L'écran est positionné �  une distance $D$ des fentes. 
+largeur $b$ chacunes. L'écran est positionné Ã  une distance $D$ des fentes. 
 
 Le résultat présenté est l'intensité lumineuse normalisée en fonction de 
 la position sur l'écran pour permettre une comparaison des différentes situations.
@@ -16,7 +17,7 @@ Formules
 
 Informations
 ------------
-Auteurs : Arnaud Raoux, Emmanuel Baudin, François Lévrier, Pierre Cladé et la prépa agreg de Montrouge
+Auteurs : Arnaud Raoux, Emmanuel Baudin, FranÃ§ois Lévrier, Pierre Cladé et la prépa agreg de Montrouge
 Année de création : 2020
 Version : 1.0
 Version de Python : 3.6
@@ -36,7 +37,7 @@ titre = r"Intensités issues d'une cavité Fabry-Pérot"
 #description = r"""Ce programme représente la figure d'interférence obtenue lorsqu'une onde 
 #plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif 
 #de $N$ fentes régulièrement espacées d'une distance $a$ (centre-centre) et de 
-#largeur $b$ chacunes. L'écran est positionné �  une distance $D$ des fentes. 
+#largeur $b$ chacunes. L'écran est positionné Ã  une distance $D$ des fentes. 
 #
 #Le résultat présenté est l'intensité lumineuse normalisée en fonction de 
 #la position sur l'écran pour permettre une comparaison des différentes situations.
@@ -67,7 +68,7 @@ def Ir(phi,m):
 # --- Réalisation du plot ----------------------------------
 #===========================================================
 
-# La fonction plot_data est appelée �  chaque modification des paramètres
+# La fonction plot_data est appelée Ã  chaque modification des paramètres
 def plot_data(m):
 
     phi = np.linspace(-15, 15, 2001) #Zone observee : +/- 1 cm
