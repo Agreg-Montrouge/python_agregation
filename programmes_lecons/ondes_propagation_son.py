@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
 """Déplacement de poussières dans une onde sonore
 
 Description

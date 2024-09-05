@@ -1,11 +1,16 @@
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
 r"""Reflexion des ondes sonores planes harmoniques propagatives
 
 Description
 -----------
-Ce programme représente l'effet d'une barrière d'amplitude du coefficient 
-de reflexion $r$ sur une onde sonore plane harmonique propagative. 
+Ce programme représente l'effet d'une barrière d'amplitude du
+coefficient de reflexion $r$ sur une onde sonore plane harmonique
+propagative.
 
-La réflexion est représentée spatialement, le temps pouvant être varié indépendamment. 
+La réflexion est représentée spatialement, le temps pouvant être varié
+indépendamment.
 
 Informations
 ------------
@@ -19,6 +24,7 @@ Liste des modifications :
     * v 1.00 : 2016-05-02 Première version complète - baudin@lpa.ens.fr
     * v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
     * v 1.2 : 2019-05-10
+
 """
 
 import numpy as np

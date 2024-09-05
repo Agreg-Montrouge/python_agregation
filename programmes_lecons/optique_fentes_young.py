@@ -1,9 +1,15 @@
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
 r"""Interférence par des fentes d'Young
 
 Description
 -----------
-Ce programme représente la figure d'interférence obtenue lorsqu'une onde plane monochromatique de longueur d'onde $\lambda$ traverse un dispositif de fentes d'Young éloignées d'une distance $a$ (centre-centre) et de largeur $w$. 
-L'écran est positionné à une distance $L$ des fentes.
+Ce programme représente la figure d'interférence obtenue lorsqu'une
+onde plane monochromatique de longueur d'onde $\lambda$ traverse un
+dispositif de fentes d'Young éloignées d'une distance $a$
+(centre-centre) et de largeur $w$.  L'écran est positionné à une
+distance $L$ des fentes.
 
 Formules
 --------
@@ -21,6 +27,7 @@ Liste des modifications :
     * v 1.0 : 2016-05-02 Première version complète 
     * v 1.1 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
     * v 1.2 : 2019-05-10 Simplification du programme
+
 """
 
 import numpy as np
@@ -42,8 +49,10 @@ d'Young éloignées d'une distance $a$
 L'écran est positionné à une distance 
 $L$ des fentes.
 
-$I = \sinc\left(\frac{kwx}{2L}\right)^2 \cos\left(\frac{kax}{2L}\right)^2$
+$I = \mathrm{sinc}\left(\frac{kwx}{2L}\right)^2 \cos\left(\frac{kax}{2L}\right)^2$
 """
+
+#$I = \sinc\left(\frac{kwx}{2L}\right)^2 \cos\left(\frac{kax}{2L}\right)^2$
 
 #===========================================================
 # --- Variables globales et paramètres ---------------------

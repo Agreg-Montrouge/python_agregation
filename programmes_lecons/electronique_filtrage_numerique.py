@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+# -*- Encoding: utf-8 -*-
 r"""Filtrage numérique
 
 Description
@@ -40,6 +42,7 @@ t0fig1 = 0.
 tfinfig1 = 0.07
 f=plt.figure(1)
 plt.plot(temps[int(t0fig1/Te):int(tfinfig1/Te)],entree[int(t0fig1/Te):int(tfinfig1/Te)],'r-',label="Entrée")
+# plt.show()
 
 ######################## Filtrage passe bas ordre 1 et passe haut ordre 2 #############
 ##########################
@@ -54,3 +57,4 @@ for i in range(len(entree)-1):
 plt.plot(temps[int(t0fig1/Te):int(tfinfig1/Te)],sortie1[int(t0fig1/Te):int(tfinfig1/Te)],'b-',label="Passe bas ordre 1")
 plt.plot(temps[int(t0fig1/Te):int(tfinfig1/Te)],sortie2[int(t0fig1/Te):int(tfinfig1/Te)],'g-',label="Passe haut ordre 1")
 plt.legend(fontsize="20")
+plt.show()

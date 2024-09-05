@@ -1,4 +1,6 @@
-"""Propatation d'un paquet d'onde avec dispersion
+#! /usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+"""Propagation d'un paquet d'onde avec dispersion
 
 Description
 -----------

@@ -1,14 +1,20 @@
-r""" Effet tunnel
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
+r"""Effet tunnel
 
-Description
------------
-Ce programme permet de calculer la transmission d'une barrière de potentiel pour 
-une onde de matière incidente d'énergie $E$ variable. Il permet en particulier de 
-mettre en évidence l'effet tunnel. 
+Description 
+----------- 
 
-La transmission est tracée en fonction de l'énergie de la particule incidente. 
-Sont également représentés, l'équivalent classique de la transmission et 
-l'approximation de barrière large habituelle en mécanique quantique dans sa limite de validité.
+Ce programme permet de calculer la transmission d'une barrière de
+potentiel pour une onde de matière incidente d'énergie $E$
+variable. Il permet en particulier de mettre en évidence l'effet
+tunnel.
+
+La transmission est tracée en fonction de l'énergie de la particule
+incidente. Sont également représentés, l'équivalent classique de la
+transmission et l'approximation de barrière large habituelle en
+mécanique quantique dans sa limite de validité.
 
 Formules
 --------
@@ -30,7 +36,7 @@ Licence : Creative Commons Attribution - Pas d'utilisation Commerciale 4.0 Inter
 Liste des modifications :
     * v 1.00 : 2016-05-15 Première version complète
     * v 1.10 : 2019-01-09 Remplacement de axisbg dépréciée par facecolor
-    * v 1.2  : 2019-05-10 
+    * v 1.2  : 2019-05-10
 
 """
 

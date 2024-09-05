@@ -1,3 +1,4 @@
+#! /usr/bin/env python3
 # -*- Encoding: utf-8 -*-
 r"""Figure de diffraction par N fentes
 

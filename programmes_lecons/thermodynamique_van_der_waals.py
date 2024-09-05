@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
 r"""Transition liquide-vapeur pour un fluide de Van der Waals
 
 Description

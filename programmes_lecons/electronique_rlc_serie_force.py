@@ -1,3 +1,5 @@
+#! /usr/bin/env python3
+# -*- Encoding: utf-8 -*-
 r"""Résonance en tension d'un circuit RLC série
 
 Description

@@ -1,6 +1,6 @@
-#!/usr/bin/env python
-# coding: utf-8
-
+#!/usr/bin/env python3
+# -*- Encoding: utf-8 -*-
+#
 r"""Correction non-linéaires au pendule simple
 
 Description
