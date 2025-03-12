@@ -6,6 +6,9 @@ Liste des programmes disponibles
 ================================
 
 * Figure de diffraction par N fentes (`optique_diffraction_N_fentes.py <diffraction_N_fentes.py>`_)
+* Figure de diffraction par une fente qui compare différents régimes (`optique_Fraunhofer_Fresnel.py <optique_Fraunhofer_Fresnel.py>`_)
+* Figure d'interférences en lame d'air d'un interféromètre de Michelson (`optique_Michelson_lame_dair_sodium.py <optique_Michelson_lame_dair_sodium.py>`_)
+* Tracé des rayons pour un miroir sphérique (`optique_geometrique_miroir_spherique.py <optique_geometrique_miroir_spherique.py>`_)
 * Diffusion de particules (`diffusion_particules.py <thermodynamique_diffusion_particules.py>`_)
 * Échantillionage (`echantillonage_filtrage.py <electronique_echantillonage_filtrage.py>`_)
 * Écoulement de Couette plan (`ecoulement_couette.py <fluides_ecoulement_couette.py>`_)
